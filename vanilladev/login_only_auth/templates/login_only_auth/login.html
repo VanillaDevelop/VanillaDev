@@ -1,5 +1,18 @@
-<form action="/your-name/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center" id="login-container">
+    <h1 class="text-center">Administrator Login</h1>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column" id="login-pane"><i class="fa fa-lock text-center icon-large"></i>
+            <h1 class="text-center">Login</h1>
+            <form action="/your-name/" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

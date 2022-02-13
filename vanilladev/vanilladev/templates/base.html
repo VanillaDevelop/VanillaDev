@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +7,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>vanilladev</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body class="text-light">
@@ -30,12 +31,10 @@
             </div>
         </div>
     </nav>
-    
     {% block content %}
     {% endblock %}
-
     <footer>
-        <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100px;background-color: #111111;margin-top: 50px;"><span class="text-center">© Vanilla 2022<br></span>
+        <div class="d-flex flex-column justify-content-center align-items-center"><span class="text-center">© Vanilla 2022<br></span>
             <div><a class="social-link" href="https://www.kaggle.com/vanilladev"><i class="fab fa-kaggle link-icon"></i></a><span>&nbsp;</span><a class="social-link" href="https://github.com/VanillaDevelop"><i class="fa fa-github link-icon"></i></a></div>
         </div>
     </footer>
