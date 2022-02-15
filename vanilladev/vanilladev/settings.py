@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'ckeditor',
+    'bootstrap5',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
