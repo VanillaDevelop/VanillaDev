@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
+    'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
     'django.contrib.auth',
@@ -124,6 +126,8 @@ STATIC_URL = '/assets/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "vanilladev", "assets"),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
