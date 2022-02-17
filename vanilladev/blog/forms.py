@@ -1,7 +1,7 @@
 from django.forms import ModelForm, modelformset_factory
 from .models import BlogPost, Category
 
-CategoryFormSet = modelformset_factory(Category, extra=2, fields=['name'])
+CategoryFormSet = modelformset_factory(Category, extra=2, fields=['name'], can_delete=True)
 
 class BlogPostForm(ModelForm):
     class Meta:

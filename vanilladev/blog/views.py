@@ -8,4 +8,4 @@ def add(request):
 
 def categories(request):
     formset = CategoryFormSet(queryset=Category.objects.all())
-    return render(request, 'blog/categories.html', {"form":formset})
+    return render(request, 'blog/categories.html', {"formset":formset})
