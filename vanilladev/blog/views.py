@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Category
 from .forms import BlogPostForm, CategoryFormSet
 
@@ -7,5 +7,17 @@ def add(request):
     return render(request, 'blog/add.html', {"form":form})
 
 def categories(request):
-    formset = CategoryFormSet(queryset=Category.objects.all())
-    return render(request, 'blog/categories.html', {"formset":formset})
+    #POST - update categories
+    if request.method == "POST":
+        formset = CategoryFormSet(request.POST, prefix="form", queryset=Category.objects.all())
+        if(formset.is_valid()):
+            formset.save()
+        return redirect('categories')
+
+    else:
+        #GET - display categories
+        formset = CategoryFormSet(queryset=Category.objects.all(), prefix="form")
+        for form in formset.forms:
+            #Set width 100 for the textboxes for category name
+            form.fields["name"].widget.attrs.update({'class': 'w-100'})
+        return render(request, 'blog/categories.html', {"formset":formset})

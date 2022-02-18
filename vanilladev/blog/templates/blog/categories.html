@@ -5,31 +5,34 @@
 <h1 class="text-center">Manage Categories</h1>
 <hr />
 <div class="container">
-    {{ formset.non_form_errors.as_ul }}
-    <table id="formset" class="form table text-white">
-        <thead>
+    <form id="UpdateCategoriesForm" method="POST">
+        {{ formset.non_form_errors.as_ul }}
+        {{ formset.management_form }}
+        {% csrf_token %}
+        <table id="formset" class="form table text-white">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th style="width:20px;">Delete</th>
+                </tr>
+            </thead>
+            {% for form in formset.forms %}
             <tr>
-                <th>Name</th>
-                <th style="width:20px;">Delete</th>
+                <td class="w-100">
+                    {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %}
+                    {{form.name.errors.as_ul }}
+                    {{form.name}}
+                </td>
+                <td class="text-center">
+                    {{form.DELETE.errors.as_ul}}
+                    {{form.DELETE}}
+                </td>
             </tr>
-        </thead>
-        {% for form in formset.forms %}
-        <tr class="{% cycle row1 row2 %}">
-            {% for field in form.visible_fields %}
-            <td>
-                {# Include the hidden fields in the form #}
-                {% if forloop.first %}
-                {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-                {% endfor %}
-                {% endif %}
-                {{ field.errors.as_ul }}
-                {{ field }}
-            </td>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-    <input type="submit" class="btn btn-success" value="Update" />
+        </table>
+        <input type="submit" id="btn-update-categories" class="btn btn-success" value="Update" />
+    </form>
 </div>
 {% endblock %}

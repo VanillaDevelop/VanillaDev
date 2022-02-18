@@ -1,5 +1,5 @@
 #frontpage_header {
-  background: url("../../assets/img/bannerimg.jpg") center / cover no-repeat;
+  background: url("bannerimg.jpg") center / cover no-repeat;
   height: calc(100vh - 100px);
   max-width: 2200px;
   margin: auto;
@@ -67,7 +67,7 @@ body {
 }
 
 .link-readmore {
-  color: #fb8d8d;
+  color: #fb8d8d !important;
 }
 
 .project-column > div {
@@ -78,7 +78,7 @@ body {
 }
 
 .link-readmore:hover {
-  color: #fb8d8d;
+  color: #fb8d8d !important;
 }
 
 .project-column span {
@@ -151,3 +151,26 @@ footer > div {
   background: var(--bs-blue);
 }
 
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+}
+
+#blogpost-container {
+  min-height: 75vh;
+}
+
+#table-delete {
+  width: 20px;
+}
+
+#container-category-management {
+  min-height: 70vh;
+}
+
+#btn-update-categories {
+  width: 150px;
+}
