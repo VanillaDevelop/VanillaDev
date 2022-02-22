@@ -12,5 +12,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     content = RichTextField()
+    created_at = models.DateField()
+    is_published = models.BooleanField()
     categories = ManyToManyField(Category)
 

@@ -6,4 +6,4 @@ CategoryFormSet = modelformset_factory(Category, extra=2, fields=['name'], can_d
 class BlogPostForm(ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['content', 'categories']
+        fields = ['content', 'categories', 'created_at', 'is_published']
