@@ -4,7 +4,7 @@ from .forms import BlogPostForm, CategoryFormSet
 
 def add(request):
     form = BlogPostForm()
-    return render(request, 'blog/add.html', {"form":form})
+    return render(request, 'blog/change.html', {"form":form})
 
 def categories(request):
     #POST - update categories

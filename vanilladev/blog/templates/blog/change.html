@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr />
+<h1 class="text-center">Add/Edit Blogpost</h1>
+<hr />
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" id="btn-add-blogpost" class="btn btn-success" value="Save" />
+    </form>
+    </form>
+</div>
+{% endblock %}
