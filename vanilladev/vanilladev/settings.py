@@ -143,6 +143,7 @@ AUTH_USER_MODEL = 'login_only_auth.User'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full'
+        'toolbar': 'full',
+        'width': '100%'
     }
 }

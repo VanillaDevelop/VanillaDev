@@ -87,7 +87,6 @@ body {
 
 .icon-large {
   font-size: 6em;
-  margin-bottom: 15px;
 }
 
 @media (max-width: 991) {
@@ -173,4 +172,70 @@ a:hover {
 
 #btn-update-categories {
   width: 150px;
+}
+
+a.nav-link {
+  color: white;
+}
+
+a.active {
+  color: black;
+}
+
+a.nav-link:hover {
+  color: white;
+}
+
+a.nav-link:focus {
+  color: white;
+}
+
+.project-pane {
+  min-height: 100px;
+  border-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+#tabs-project {
+  border-bottom: 0px !important;
+}
+
+.header-container {
+  border-top: 1px solid;
+  border-bottom: 1px solid white;
+  padding: 15px 50px 15px 50px;
+  margin-bottom: 5vh;
+}
+
+.navlink {
+  width: 200px;
+}
+
+.project-nutshell-container {
+  background: #141414;
+  padding: 25px;
+  border: 1px solid;
+}
+
+.consistent-height.tab-content {
+  display: flex;
+}
+
+.consistent-height.tab-content > .tab-pane {
+  display: block;
+  visibility: hidden;
+  margin-right: -100%;
+  width: 100%;
+}
+
+.consistent-height.tab-content > .active {
+  visibility: visible;
+}
+
+.django-ckeditor-widget {
+  width: 100%;
 }
