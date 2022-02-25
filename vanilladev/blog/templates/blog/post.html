@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container header-container">
-    <h1 class="text-center">Vanilla Develop Blog</h1>
-    <div class="d-flex flex-row justify-content-between"><a class="navlink" href="#">&lt; Previous
-            Post</a><span>{{post.created_at}}</span><a class="text-end navlink" href="#">Next Post &gt;</a></div>
+<div id="frontpage-header" class="mb-2"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="#"><span>Blog</span></a></li>
+        <li class="breadcrumb-item"><a href="#"><span>Project Update</span></a></li>
+    </ol>
 </div>
-<div class="container" id="blogpost-container">
-    <h1 class="text-center">{{post.title}}</h1>
-    <p class="text-center">{{categories}}</p>
+<div class="container header-container">
+    <h1 class="text-center">{{post.title}}<br></h1>
+    <p class="text-center">Categories: {{categories}}</p>
+        <div class="d-flex flex-row justify-content-between"><a class="navlink" href="#">&lt; Previous
+                Post</a><span>{{post.created_at}}</span><a class="text-end navlink" href="#">Next Post &gt;</a></div>
+</div>
+<div class="container">
     {{post.content|safe}}
 </div>
 {% endblock %}
