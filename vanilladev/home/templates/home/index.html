@@ -1,110 +1,176 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
+    integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
 
 {% block content %}
-<div id="frontpage_header"></div>
-    <div class="container">
-        <div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <h5 class="alert-heading"><strong>Work In Progress</strong></h5><span><strong>This webpage is currently being re-developed from scratch.</strong><br>The following pages are not yet available:<br></span>
-            <ul>
-                <li>Blog</li>
-                <li>Projects</li>
-                <li>Side Projects</li>
-                <li>Articles</li>
-            </ul>
+<div id="frontpage-header" class="mb-2"></div>
+<div class="container mt-4">
+    <div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="btn-close"
+            data-bs-dismiss="alert" aria-label="Close"></button>
+        <h5 class="alert-heading"><strong>Work In Progress</strong></h5><span><strong>This webpage is currently being
+                re-developed from scratch.</strong><br>The following pages are not yet available:<br></span>
+        <ul>
+            <li>Blog</li>
+            <li>Projects</li>
+            <li>Side Projects</li>
+            <li>Articles</li>
+        </ul>
+    </div>
+</div>
+<div class="container mt-5">
+    <h1 class="text-center mb-3">About Me</h1>
+    <div class="row row-about">
+        <div class="col d-flex justify-content-center align-items-center"><i class="fa fa-child icon-large"></i></div>
+        <div class="col-sm-12 col-lg-10">
+            <p>When I was in my young teenage years, I first learned about programming and automation through a language
+                called "AutoIT". It was a small, niche scripting language, and its main purpose was the automation of
+                simple repeated mouse- or keyboard actions. I used this language to write very simple autoclicker
+                scripts for an online game I was playing at the time. However, I remember that even back then, I saw the
+                potential in what was possible through what more experienced developers created at the time, such as
+                complex bots which could read the game state from memory and send targeted packets directly to the
+                server without the need of keyboard commands ever being executed. Among other things, I consider this to
+                be a core influence into what eventually made me want to become a software developer.</p>
         </div>
     </div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-3">About Me</h1>
-        <div class="row row-about">
-            <div class="col d-flex justify-content-center align-items-center"><i class="fa fa-child icon-large"></i></div>
-            <div class="col-sm-12 col-lg-10">
-                <p>When I was in my young teenage years, I first learned about programming and automation through a language called "AutoIT". It was a small, niche scripting language, and its main purpose was the automation of simple repeated mouse- or keyboard actions. I used this language to write very simple autoclicker scripts for an online game I was playing at the time. However, I remember that even back then, I saw the potential in what was possible through what more experienced developers created at the time, such as complex bots which could read the game state from memory and send targeted packets directly to the server without the need of keyboard commands ever being executed. Among other things, I consider this to be a core influence into what eventually made me want to become a software developer.</p>
-            </div>
-        </div>
-        <div class="row flex-row-reverse row-about">
-            <div class="col d-flex justify-content-center align-items-center"><i class="fas fa-school icon-large"></i></div>
-            <div class="col-sm-12 col-lg-10">
-                <p>I had my first experience with proper programming in the technical college I attended, where I learned the fundamentals of OOP in C# and Java. I developed a small Flappy Bird clone from scratch using XNA, an old framework for game development which eventually provided the structure the MonoGame library would follow. Other than that, I would spend much of my time in those years implementing simple frontends using WinForms (and eventually WPF), which often called Web APIs or scraped data from the web in some form. Unfortunately, most of these projects have been lost to time. During this time, I also took a few short-term internships, which allowed me to gain some insight into how software development is applied in practice.<br></p>
-            </div>
-        </div>
-        <div class="row row-about">
-            <div class="col d-flex justify-content-center align-items-center"><i class="fa fa-university icon-large"></i></div>
-            <div class="col-sm-12 col-lg-10">
-                <p>During my university education, I learned more about writing clean codebases, and had an opportunity to see what fields really interest me. I discovered my love for Python as a "swiss army knife" of programming, as well as my interests in data analysis and machine learning. I still love playing video games, and will often spend weekends working on small side projects that can improve my experience in some way. I use these projects as an opportunity to learn new skills and apply them directly to practical problems. As the educational chapter in my life begins to wrap up, I decided that it would be good to keep a portfolio of passion projects, and thus decided to write this website to keep track of my thoughts and contributions.</p>
-            </div>
+    <div class="row flex-row-reverse row-about">
+        <div class="col d-flex justify-content-center align-items-center"><i class="fas fa-school icon-large"></i></div>
+        <div class="col-sm-12 col-lg-10">
+            <p>I had my first experience with proper programming in the technical college I attended, where I learned
+                the fundamentals of OOP in C# and Java. I developed a small Flappy Bird clone from scratch using XNA, an
+                old framework for game development which eventually provided the structure the MonoGame library would
+                follow. Other than that, I would spend much of my time in those years implementing simple frontends
+                using WinForms (and eventually WPF), which often called Web APIs or scraped data from the web in some
+                form. Unfortunately, most of these projects have been lost to time. During this time, I also took a few
+                short-term internships, which allowed me to gain some insight into how software development is applied
+                in practice.<br></p>
         </div>
     </div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-3">My Interests</h1>
-        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
-            <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-text-height feature_icon" id="feature_textanalysis"></i>
-                <h5 class="mt-2">Text Analysis</h5>
-                <p>Text mining, classification, prediction and generation are all fields I am interested in. While for my personal projects I tend to take a more humorous approach with these types of projects, I am genuinely interested in the science behind it.</p>
-            </div>
-            <div class="col d-flex flex-column align-items-center feature"><i class="la la-line-chart feature_icon" id="feature_machinelearning"></i>
-                <h5 class="mt-2">Machine Learning</h5>
-                <p>I work with machine learning regularly, including in my bachelor's thesis, and for projects involving text generation. I also usually have one or two projects involving machine learning in my pipeline, to learn about new types of models and agents.</p>
-            </div>
-            <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-gamepad feature_icon" id="feature_gamedev"></i>
-                <h5 class="mt-2">Game Development</h5>
-                <p>While my previous attempts at game development have either been very long ago or in the scope of university projects, I am working on concepts for eventual small titles or game jams when time allows for it. I have some prior experience with Unity.</p>
-            </div>
-            <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-internet-explorer feature_icon" id="feature_webdev"></i>
-                <h5 class="mt-2">Web Development</h5>
-                <p>I work mostly with Django as a full-stack solution, which I have used for this website as well as my bachelor's thesis. However, I also have basic knowledge of frameworks such as Vue and Express to create Node based applications.</p>
-            </div>
+    <div class="row row-about">
+        <div class="col d-flex justify-content-center align-items-center"><i class="fa fa-university icon-large"></i>
+        </div>
+        <div class="col-sm-12 col-lg-10">
+            <p>During my university education, I learned more about writing clean codebases, and had an opportunity to
+                see what fields really interest me. I discovered my love for Python as a "swiss army knife" of
+                programming, as well as my interests in data analysis and machine learning. I still love playing video
+                games, and will often spend weekends working on small side projects that can improve my experience in
+                some way. I use these projects as an opportunity to learn new skills and apply them directly to
+                practical problems. As the educational chapter in my life begins to wrap up, I decided that it would be
+                good to keep a portfolio of passion projects, and thus decided to write this website to keep track of my
+                thoughts and contributions.</p>
         </div>
     </div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-3">What I do</h1>
-        <p class="two-columns">I am currently a full-time student working on my master's degree in Software Engineering. As I plan on finishing my degree in the recommended time, this takes up a good chunk of my time. I usually invest some of my free time into broadening my horizons when it comes to software development. I like learning about new frameworks and technologies by applying them to toy projects that are personally useful to me in some way. Through this, I have learned the basics of <strong>Unity</strong>, <strong>Vue</strong>, <strong>TensorFlow</strong>, <strong>NodeJS</strong>,&nbsp;and other frameworks. On top of that, I also have professional backgrounds through my education in creating applications with a variety of languages such as <strong>C# </strong>and&nbsp;<strong>Python</strong>. Generally, I will be working on one or two such projects simultaneously. On top of that, I also enjoy data analysis and its applications especially within the field of machine learning. I like reporting my findings and experiments in these domains, and so I occasionally write <strong>Articles</strong> about them. I try to apply some scientific rigor to these articles, applying known metrics and following best practices while also attempting to stay within the realm of what is both enjoyable and interesting to read.</p>
+</div>
+<div class="container mt-5">
+    <h1 class="text-center mb-3">My Interests</h1>
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+        <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-text-height feature_icon"
+                id="feature_textanalysis"></i>
+            <h5 class="mt-2">Text Analysis</h5>
+            <p>Text mining, classification, prediction and generation are all fields I am interested in. While for my
+                personal projects I tend to take a more humorous approach with these types of projects, I am genuinely
+                interested in the science behind it.</p>
+        </div>
+        <div class="col d-flex flex-column align-items-center feature"><i class="la la-line-chart feature_icon"
+                id="feature_machinelearning"></i>
+            <h5 class="mt-2">Machine Learning</h5>
+            <p>I work with machine learning regularly, including in my bachelor's thesis, and for projects involving
+                text generation. I also usually have one or two projects involving machine learning in my pipeline, to
+                learn about new types of models and agents.</p>
+        </div>
+        <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-gamepad feature_icon"
+                id="feature_gamedev"></i>
+            <h5 class="mt-2">Game Development</h5>
+            <p>While my previous attempts at game development have either been very long ago or in the scope of
+                university projects, I am working on concepts for eventual small titles or game jams when time allows
+                for it. I have some prior experience with Unity.</p>
+        </div>
+        <div class="col d-flex flex-column align-items-center feature"><i class="fa fa-internet-explorer feature_icon"
+                id="feature_webdev"></i>
+            <h5 class="mt-2">Web Development</h5>
+            <p>I work mostly with Django as a full-stack solution, which I have used for this website as well as my
+                bachelor's thesis. However, I also have basic knowledge of frameworks such as Vue and Express to create
+                Node based applications.</p>
+        </div>
     </div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Recent Projects</h1>
-        <div class="row">
-            <div class="col-lg-6 project-column">
-                <div class="d-flex flex-column justify-content-between h-100">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <h5>&nbsp;GPT-2 Subreddit Simulation</h5><span><strong>ARTICLE&nbsp;</strong><i class="fab fa-connectdevelop"></i></span>
-                        </div>
-                        <p>This introductory article to GPT-2 lays the foundation for a future software project aiming to emulate the writing style of different Massively Multiplayer Online Role Playing Game Subreddits. It describes the transformer architecture used in GPT-2 on a very basic level, and shows the process of scraping data from reddit to use as training data for GPT-2.<br><br></p>
-                    </div><a class="link-readmore" href="#">Read More &gt;</a>
-                </div>
+</div>
+<div class="container mt-5">
+    <h1 class="text-center mb-3">What I do</h1>
+    <p class="two-columns">I am currently a full-time student working on my master's degree in Software Engineering. As
+        I plan on finishing my degree in the recommended time, this takes up a good chunk of my time. I usually invest
+        some of my free time into broadening my horizons when it comes to software development. I like learning about
+        new frameworks and technologies by applying them to toy projects that are personally useful to me in some way.
+        Through this, I have learned the basics of <strong>Unity</strong>, <strong>Vue</strong>,
+        <strong>TensorFlow</strong>, <strong>NodeJS</strong>,&nbsp;and other frameworks. On top of that, I also have
+        professional backgrounds through my education in creating applications with a variety of languages such as
+        <strong>C# </strong>and&nbsp;<strong>Python</strong>. Generally, I will be working on one or two such projects
+        simultaneously. On top of that, I also enjoy data analysis and its applications especially within the field of
+        machine learning. I like reporting my findings and experiments in these domains, and so I occasionally write
+        <strong>Articles</strong> about them. I try to apply some scientific rigor to these articles, applying known
+        metrics and following best practices while also attempting to stay within the realm of what is both enjoyable
+        and interesting to read.</p>
+</div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Recent Work</h1>
+    <div class="row">
+        <div class="col-lg-6 project-column">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <h5>&nbsp;GPT-2 Subreddit Simulation</h5><span><strong>ARTICLE&nbsp;</strong><i
+                                class="fab fa-connectdevelop"></i></span>
+                    </div>
+                    <p>This introductory article to GPT-2 lays the foundation for a future software project aiming to
+                        emulate the writing style of different Massively Multiplayer Online Role Playing Game
+                        Subreddits. It describes the transformer architecture used in GPT-2 on a very basic level, and
+                        shows the process of scraping data from reddit to use as training data for GPT-2.<br><br></p>
+                </div><a class="link-readmore" href="#">Read More &gt;</a>
             </div>
-            <div class="col-lg-6 project-column">
-                <div class="d-flex flex-column justify-content-between h-100">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <h5>Vanilla Develop Website</h5><span><strong>PROJECT</strong>&nbsp;<i class="fab fa-connectdevelop"></i></span>
-                        </div>
-                        <p>This website is currently being re-written from scratch using Django after alternatives such as Squarespace and WordPress proved to be too much of a nuisance to configure. When completed, the website will feature a CMS-style blog and project management and fully responsive design.<br></p>
-                    </div><a class="link-readmore" href="#">Read More &gt;</a>
-                </div>
+        </div>
+        <div class="col-lg-6 project-column">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <h5>Vanilla Develop Website</h5><span><strong>PROJECT</strong>&nbsp;<i
+                                class="fab fa-connectdevelop"></i></span>
+                    </div>
+                    <p>This website is currently being re-written from scratch using Django after alternatives such as
+                        Squarespace and WordPress proved to be too much of a nuisance to configure. When completed, the
+                        website will feature a CMS-style blog and project management and fully responsive design.<br>
+                    </p>
+                </div><a class="link-readmore" href="#">Read More &gt;</a>
             </div>
-            <div class="col-lg-6 project-column">
-                <div class="d-flex flex-column justify-content-between h-100">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <h5>Rust Helper</h5><span><strong>SIDE</strong>&nbsp;<strong>PROJECT&nbsp;</strong><i class="fab fa-connectdevelop"></i></span>
-                        </div>
-                        <p>A small GitHub hosted side-project which calculates and simulates certain game mechanics&nbsp;of the video game Rust. As it was my first attempt of using Vue, the code style is rather inconsistent, as I was trying out several techniques of data-flow (classic parent-child communication as well as using the VueX store).<br><br></p>
-                    </div><a class="link-readmore" href="#">Read More &gt;</a>
-                </div>
+        </div>
+        <div class="col-lg-6 project-column">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <h5>Rust Helper</h5><span><strong>SIDE</strong>&nbsp;<strong>PROJECT&nbsp;</strong><i
+                                class="fab fa-connectdevelop"></i></span>
+                    </div>
+                    <p>A small GitHub hosted side-project which calculates and simulates certain game mechanics&nbsp;of
+                        the video game Rust. As it was my first attempt of using Vue, the code style is rather
+                        inconsistent, as I was trying out several techniques of data-flow (classic parent-child
+                        communication as well as using the VueX store).<br><br></p>
+                </div><a class="link-readmore" href="#">Read More &gt;</a>
             </div>
-            <div class="col-lg-6 project-column">
-                <div class="d-flex flex-column justify-content-between h-100">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <h5>Aion Classic Sentiment Analysis</h5><span><strong>ARTICLE&nbsp;</strong><i class="fab fa-connectdevelop"></i></span>
-                        </div>
-                        <p>In the summer of 2021, the classic MMORPG Aion was re-released in the North American area. This version featured the content available near its original launch, but introduced new microtransaction systems which upset the originally intended game design. This article explores the public response to this decision.</p>
-                    </div><a class="link-readmore" href="#">Read More &gt;</a>
-                </div>
+        </div>
+        <div class="col-lg-6 project-column">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <h5>Aion Classic Sentiment Analysis</h5><span><strong>ARTICLE&nbsp;</strong><i
+                                class="fab fa-connectdevelop"></i></span>
+                    </div>
+                    <p>In the summer of 2021, the classic MMORPG Aion was re-released in the North American area. This
+                        version featured the content available near its original launch, but introduced new
+                        microtransaction systems which upset the originally intended game design. This article explores
+                        the public response to this decision.</p>
+                </div><a class="link-readmore" href="#">Read More &gt;</a>
             </div>
         </div>
     </div>

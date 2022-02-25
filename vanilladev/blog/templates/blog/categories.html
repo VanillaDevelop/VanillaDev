@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<hr />
-<h1 class="text-center">Manage Categories</h1>
-<hr />
+<div class="container header-container mt-5">
+    <h1 class="text-center">Category Management</h1>
+</div>
 <div class="container">
+    <p>On this page, you may change the name of existing categories, delete them, or add new ones. These categories will
+        be displayed when creating blog posts. Keep in mind that a category cannot be deleted if it is used in any
+        existing blog post.</p>
     <form id="UpdateCategoriesForm" method="POST">
         {{ formset.non_form_errors.as_ul }}
         {{ formset.management_form }}
         {% csrf_token %}
-        <table id="formset" class="form table text-white">
+        <table id="formset" class="form table">
             <thead>
                 <tr>
                     <th>Name</th>
