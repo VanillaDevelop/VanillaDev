@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load blog_extras %}
+
 {% block content %}
 <div id="frontpage-header" class="mb-3"></div>
     <div class="container">
@@ -13,13 +15,15 @@
     <div class="container">
         <nav class="blogpagination-nav">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% if pageno > 1 %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                {% endif %}
+                {% for page in pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                {% endfor %}
+                {% if pageno < pagecount %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% endif %}
             </ul>
         </nav>
         <div class="row mb-3">
@@ -39,13 +43,15 @@
         </div>
         <nav class="blogpagination-nav">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% if pageno > 1 %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                {% endif %}
+                {% for page in pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                {% endfor %}
+                {% if pageno < pagecount %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>
