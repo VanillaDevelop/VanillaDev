@@ -264,3 +264,30 @@ a.nav-link:focus {
   font-family: Assistant, sans-serif;
 }
 
+.blogpost {
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px;
+  padding: 10px;
+  height: 100%;
+}
+
+.blogpost > p {
+  height: auto;
+}
+
+.blogpost > span {
+  width: 100%;
+  display: block;
+}
+
+.blogpost > a {
+  width: 100%;
+  display: block;
+}
+
+.blogpagination-nav {
+  margin-bottom: 40px;
+}
+

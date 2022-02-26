@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="frontpage-header" class="mb-3"></div>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="#"><span>Blog</span></a></li>
+        </ol>
+    </div>
+    <div class="container header-container">
+        <h1 class="text-center">Vanilla Develop Blog</h1>
+    </div>
+    <div class="container">
+        <nav class="blogpagination-nav">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            </ul>
+        </nav>
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-xl-4 mb-4">
+                <div class="d-flex flex-column blogpost">
+                    <h3 class="text-center">Blog Post Test 123</h3>
+                    <p class="text-center">24th Feb, 2022</p>
+                    <hr>
+                    <div class="d-flex flex-column flex-fill justify-content-between">
+                        <p>This is a test text I was too poor for lorem ipsum so instead i decided to just put some random text the text can also be a bit longer because why not roughly about three lines maybe four i think four is pretty good actually</p><a class="text-end" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="blogpagination-nav">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

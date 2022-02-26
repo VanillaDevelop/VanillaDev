@@ -58,3 +58,6 @@ def post(request, id):
         return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories)})
     else:
         return redirect('home.index')
+
+def overview(request):
+    return render(request, 'blog/overview.html')
