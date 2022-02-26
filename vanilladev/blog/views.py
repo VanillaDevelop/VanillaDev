@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from blog.models import Category
 from blog.models import BlogPost
+import math
 from .forms import BlogPostForm, CategoryFormSet
 
 def add(request):
@@ -60,4 +61,6 @@ def post(request, id):
         return redirect('home.index')
 
 def overview(request):
-    return render(request, 'blog/overview.html')
+    posts = BlogPost.objects.order_by('-created_at')
+    pagecount = math.ceil(posts.count()/3)
+    return render(request, 'blog/overview.html', {"posts":posts[:3], "pagecount":pagecount})

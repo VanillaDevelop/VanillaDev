@@ -23,16 +23,19 @@
             </ul>
         </nav>
         <div class="row mb-3">
+            {% for post in posts %}
             <div class="col-12 col-md-6 col-xl-4 mb-4">
                 <div class="d-flex flex-column blogpost">
-                    <h3 class="text-center">Blog Post Test 123</h3>
-                    <p class="text-center">24th Feb, 2022</p>
+                    <h3 class="text-center">{{post.title}}</h3>
+                    <p class="text-center">{{post.created_at}}</p>
                     <hr>
                     <div class="d-flex flex-column flex-fill justify-content-between">
-                        <p>This is a test text I was too poor for lorem ipsum so instead i decided to just put some random text the text can also be a bit longer because why not roughly about three lines maybe four i think four is pretty good actually</p><a class="text-end" href="#">Read More</a>
+                        <p>{{post.content|striptags|safe|truncatechars:230}}</p>
+                        <a class="text-end" href="{% url 'blog:post' post.id %}">Read More</a>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
         <nav class="blogpagination-nav">
             <ul class="pagination">
