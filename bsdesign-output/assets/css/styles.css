@@ -40,7 +40,7 @@ h1 {
 }
 
 #navbar-main {
-  height: 100px;
+  min-height: 100px;
 }
 
 @media (min-width: 768px) {
@@ -60,6 +60,7 @@ h1 {
 .project-column {
   min-height: 200px;
   margin-bottom: 20px;
+  display: flex;
 }
 
 .link-readmore {
@@ -289,5 +290,9 @@ a.nav-link:focus {
 
 .blogpagination-nav {
   margin-bottom: 40px;
+}
+
+.feature > p {
+  text-align: justify;
 }
 
