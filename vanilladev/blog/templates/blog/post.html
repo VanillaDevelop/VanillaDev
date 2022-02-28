@@ -5,14 +5,16 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
         <li class="breadcrumb-item"><a href="{% url 'blog:overview' %}"><span>Blog</span></a></li>
-        <li class="breadcrumb-item"><a href="{% url 'blog:post' post.id %}"><span>Project Update</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blog:post' post.id %}"><span>{{post.title}}</span></a></li>
     </ol>
 </div>
 <div class="container header-container">
-    <h1 class="text-center">{{post.title}}<br></h1>
+    <h1 class="text-center">{{post.title}}<br></h1> {% if not post.is_published %}
+    <p class="text-center"><span class="badge bg-danger">Draft</span></p>
+    {% endif %}
     <p class="text-center">Categories: {{categories}}</p>
-        <div class="d-flex flex-row justify-content-between"><a class="navlink" href="#">&lt; Previous
-                Post</a><span>{{post.created_at}}</span><a class="text-end navlink" href="#">Next Post &gt;</a></div>
+    <div class="d-flex flex-row justify-content-between"><a class="navlink" href="#">&lt; Previous
+            Post</a><span>{{post.created_at}}</span><a class="text-end navlink" href="#">Next Post &gt;</a></div>
 </div>
 <div class="container">
     {{post.content|safe}}
