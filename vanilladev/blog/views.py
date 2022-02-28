@@ -76,6 +76,6 @@ def post(request, id):
         return redirect('home.index')
 
 def overview(request, pageno=1):
-    posts = BlogPost.objects.order_by('-created_at')
+    posts = BlogPost.objects.order_by('-created_at', '-id')
     pagecount = math.ceil(posts.count()/12)
     return render(request, 'blog/overview.html', {"posts":posts[12*(pageno-1):12*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
