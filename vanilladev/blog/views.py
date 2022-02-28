@@ -51,13 +51,28 @@ def categories(request):
         return render(request, 'blog/categories.html', {"formset":formset})
 
 def post(request, id):
+    #get post
     post = BlogPost.objects.get(id=id)
+
     if post:
+        #get adjacent posts
+        try:
+            next_post = post.get_next_by_created_at()
+        except BlogPost.DoesNotExist:
+            next_post = None
+
+        try:
+            prev_post = post.get_previous_by_created_at()
+        except BlogPost.DoesNotExist:
+            prev_post = None
+
+        #get categories and return
         categories = []
         for cat in post.categories.all():
             categories.append(str(cat))
-        return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories)})
+        return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories), "prev": prev_post, "next":next_post})
     else:
+        #redirect
         return redirect('home.index')
 
 def overview(request, pageno=1):

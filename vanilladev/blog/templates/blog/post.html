@@ -13,8 +13,20 @@
     <p class="text-center"><span class="badge bg-danger">Draft</span></p>
     {% endif %}
     <p class="text-center">Categories: {{categories}}</p>
-    <div class="d-flex flex-row justify-content-between"><a class="navlink" href="#">&lt; Previous
-            Post</a><span>{{post.created_at}}</span><a class="text-end navlink" href="#">Next Post &gt;</a></div>
+    <div class="d-flex flex-row justify-content-between">
+        {% if next %}
+        <a class="navlink" href="{% url 'blog:post' next.id %}">&lt; Next
+            Post</a>
+        {% else %}
+        <span class="navlink"></span>
+        {% endif %}
+        <span>{{post.created_at}}</span>
+        {% if prev %}
+        <a class="text-end navlink" href="{% url 'blog:post' prev.id %}">Previous Post &gt;</a>
+        {% else %}
+        <span class="navlink"></span>
+        {% endif %}
+    </div>
 </div>
 <div class="container">
     {{post.content|safe}}
