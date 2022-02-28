@@ -210,9 +210,6 @@ a.nav-link:focus {
   width: 200px;
 }
 
-.project-container {
-}
-
 .project-nutshell-container {
   background: #141414;
   padding: 25px;
@@ -238,10 +235,6 @@ a.nav-link:focus {
   width: 100%;
 }
 
-.nav-item {
-  font-size: 1.2rem;
-}
-
 .nav-link:hover {
   text-decoration: underline solid var(--bs-dark);
 }
@@ -257,8 +250,7 @@ a.nav-link:focus {
 }
 
 .navbar-brand {
-  font-family: Assistant, sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .navbar-nav {
@@ -276,16 +268,6 @@ a.nav-link:focus {
 
 .blogpost > p {
   height: auto;
-}
-
-.blogpost > span {
-  width: 100%;
-  display: block;
-}
-
-.blogpost > a {
-  width: 100%;
-  display: block;
 }
 
 .blogpagination-nav {

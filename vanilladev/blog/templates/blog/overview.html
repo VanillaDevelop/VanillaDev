@@ -3,56 +3,63 @@
 
 {% block content %}
 <div id="frontpage-header" class="mb-3"></div>
-    <div class="container">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
-            <li class="breadcrumb-item"><a href="{% url 'blog:overview' %}"><span>Blog</span></a></li>
-        </ol>
-    </div>
-    <div class="container header-container">
-        <h1 class="text-center">Vanilla Develop Blog</h1>
-    </div>
-    <div class="container">
-        <nav class="blogpagination-nav">
-            <ul class="pagination">
-                {% if pageno > 1 %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                {% endif %}
-                {% for page in pages %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
-                {% endfor %}
-                {% if pageno < pagecount %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                {% endif %}
-            </ul>
-        </nav>
-        <div class="row mb-3">
-            {% for post in posts %}
-            <div class="col-12 col-md-6 col-xl-4 mb-4">
-                <div class="d-flex flex-column blogpost">
-                    <h3 class="text-center">{{post.title}}</h3>
-                    <p class="text-center">{{post.created_at}}</p>
-                    <hr>
-                    <div class="d-flex flex-column flex-fill justify-content-between">
-                        <p>{{post.content|striptags|safe|truncatechars:230}}</p>
-                        <a class="text-end" href="{% url 'blog:post' post.id %}">Read More</a>
-                    </div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blog:overview' %}"><span>Blog</span></a></li>
+    </ol>
+</div>
+<div class="container header-container">
+    <h1 class="text-center">Vanilla Develop Blog</h1>
+</div>
+<div class="container">
+    <nav class="blogpagination-nav">
+        <ul class="pagination">
+            {% if pageno > 1 %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            {% endif %}
+            {% for page in pages %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+            {% endfor %}
+            {% if pageno < pagecount %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                    aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="row mb-3">
+        {% for post in posts %}
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+            <div class="d-flex flex-column blogpost">
+                <h3 class="text-center">{{post.title}}</h3>
+                <p class="text-center">{{post.created_at}}</p>
+                <hr>
+                <div class="d-flex flex-column flex-fill justify-content-between">
+                    <p>{{post.content|striptags|safe|truncatechars:230}}</p>
+                    {% if not post.is_published %}
+                    <p><span class="badge bg-danger">Draft</span></p>
+                    {% endif %}
+                    <a class="text-end" href="{% url 'blog:post' post.id %}">Read More</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
-        <nav class="blogpagination-nav">
-            <ul class="pagination">
-                {% if pageno > 1 %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                {% endif %}
-                {% for page in pages %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
-                {% endfor %}
-                {% if pageno < pagecount %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                {% endif %}
-            </ul>
-        </nav>
+        {% endfor %}
     </div>
+    <nav class="blogpagination-nav">
+        <ul class="pagination">
+            {% if pageno > 1 %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            {% endif %}
+            {% for page in pages %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+            {% endfor %}
+            {% if pageno < pagecount %}
+            <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                    aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
 {% endblock %}
