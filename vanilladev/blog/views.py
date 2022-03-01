@@ -75,6 +75,14 @@ def post(request, id):
         #redirect
         return redirect('home.index')
 
+def delete(request, id):
+    if request.method == "POST":
+        #get post
+        BlogPost.objects.get(id=id).delete()
+        return redirect('blog:overview')
+
+        
+
 def overview(request, pageno=1):
     posts = BlogPost.objects.order_by('-created_at', '-id')
     pagecount = math.ceil(posts.count()/12)
