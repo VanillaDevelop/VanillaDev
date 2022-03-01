@@ -9,7 +9,6 @@ class BlogPostForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple, required=True)
     title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     created_at = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control', 'value':date.today}))
-    is_published = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
 
     class Meta:
         model = BlogPost

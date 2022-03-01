@@ -3,16 +3,23 @@ from blog.models import Category
 from blog.models import BlogPost
 import math
 from .forms import BlogPostForm, CategoryFormSet
+from django.contrib.auth.decorators import login_required
 
+#add blog post - requires login
+@login_required()
 def add(request):
     #POST - save blog post
     if request.method == "POST":
         form = BlogPostForm(request.POST)
+        #if form is valid, redirect to the corresponding post
         if form.is_valid():
-            form.save()
-        return redirect('add')
+            post = form.save()
+            return redirect('blog:post', post.id)
+        else:
+            #serve the sent form again
+            return render(request, 'blog/change.html', {"form":form})
 
-    #GET - display new blog post
+    #GET - display empty blog post
     form = BlogPostForm()
     return render(request, 'blog/change.html', {"form":form})
 
@@ -85,5 +92,5 @@ def delete(request, id):
 
 def overview(request, pageno=1):
     posts = BlogPost.objects.order_by('-created_at', '-id')
-    pagecount = math.ceil(posts.count()/12)
-    return render(request, 'blog/overview.html', {"posts":posts[12*(pageno-1):12*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
+    pagecount = math.ceil(posts.count()/6)
+    return render(request, 'blog/overview.html', {"posts":posts[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
