@@ -70,6 +70,9 @@ def post(request, id):
     #get post or 404
     post = get_object_or_404(BlogPost, id=id)
 
+    if not post.is_published and not request.user.is_authenticated:
+        return redirect('blog:overview')
+
     #get adjacent posts or None if post is first/last
     try:
         next_post = post.get_next_by_created_at()
@@ -106,8 +109,12 @@ def delete(request, id):
 
 #blog overview
 def overview(request, pageno=1):
-    #get all posts, ordered by creation date
-    posts = BlogPost.objects.order_by('-created_at', '-id')
+    if request.user.is_authenticated:
+        #get all posts, ordered by creation date
+        posts = BlogPost.objects.order_by('-created_at', '-id')
+    else:
+        #only get non draft posts
+        posts = BlogPost.objects.filter(is_published=True).order_by('-created_at', '-id')
     #we display 6 posts per page
     pagecount = math.ceil(posts.count()/6)
     #if the requested page number is > pagecount or < 1, opt for the last/first page
