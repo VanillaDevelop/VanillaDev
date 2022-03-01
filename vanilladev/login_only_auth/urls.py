@@ -6,6 +6,6 @@ from . import views
 app_name='login'
 
 urlpatterns = [
-    path('login/',auth_views.LoginView.as_view(template_name='login_only_auth/login.html')),
+    path('login/',auth_views.LoginView.as_view(template_name='login_only_auth/login.html', redirect_authenticated_user=True)),
     path('logout/',auth_views.LogoutView.as_view(),name='logout')
 ]
