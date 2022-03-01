@@ -12,28 +12,30 @@
         {{ formset.non_form_errors.as_ul }}
         {{ formset.management_form }}
         {% csrf_token %}
-        <table id="formset" class="form table">
-            <thead>
+        <table id="formset" class="table form table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>Name</th>
                     <th style="width:20px;">Delete</th>
                 </tr>
             </thead>
-            {% for form in formset.forms %}
-            <tr>
-                <td class="w-100">
-                    {% for hidden in form.hidden_fields %}
-                    {{ hidden }}
-                    {% endfor %}
-                    {{form.name.errors.as_ul }}
-                    {{form.name}}
-                </td>
-                <td class="text-center">
-                    {{form.DELETE.errors.as_ul}}
-                    {{form.DELETE}}
-                </td>
-            </tr>
-            {% endfor %}
+            <tbody>
+                {% for form in formset.forms %}
+                <tr>
+                    <td class="w-100">
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                        {{form.name.errors.as_ul }}
+                        {{form.name}}
+                    </td>
+                    <td class="text-center">
+                        {{form.DELETE.errors.as_ul}}
+                        {{form.DELETE}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
         <input type="submit" id="btn-update-categories" class="btn btn-success" value="Update" />
     </form>

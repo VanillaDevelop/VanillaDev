@@ -1,13 +1,17 @@
 from typing_extensions import Required
-from django.forms import ModelForm, modelformset_factory, ModelMultipleChoiceField, CheckboxSelectMultiple, HiddenInput
+from django import forms
 from .models import BlogPost, Category
+from datetime import date
 
-CategoryFormSet = modelformset_factory(Category, extra=2, fields=['name'], can_delete=True)
+CategoryFormSet = forms.modelformset_factory(Category, extra=2, fields=['name'], can_delete=True)
 
-class BlogPostForm(ModelForm):
-    categories = ModelMultipleChoiceField(queryset=Category.objects.all(), widget=CheckboxSelectMultiple, required=True)
+class BlogPostForm(forms.ModelForm):
+    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple, required=True)
+    title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    created_at = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control', 'value':date.today}))
+    is_published = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
 
     class Meta:
         model = BlogPost
-        widgets = {'id': HiddenInput()}
+        widgets = {'id': forms.HiddenInput()}
         fields = ['id', 'title', 'content', 'categories', 'created_at', 'is_published']
