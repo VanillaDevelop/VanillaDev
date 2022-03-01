@@ -5,6 +5,7 @@ import math
 from .forms import BlogPostForm, CategoryFormSet
 from django.contrib.auth.decorators import login_required
 
+
 #add blog post - requires login
 @login_required()
 def add(request):
@@ -22,6 +23,7 @@ def add(request):
     #GET - display empty blog post
     form = BlogPostForm()
     return render(request, 'blog/change.html', {"form":form})
+
 
 #edit blog post - requires login
 @login_required()
@@ -43,6 +45,7 @@ def edit(request, id):
     form = BlogPostForm(instance=post)
     return render(request, 'blog/change.html', {"form":form})
 
+
 #edit categories - requires login
 @login_required()
 def categories(request):
@@ -61,40 +64,54 @@ def categories(request):
         form.fields["name"].widget.attrs.update({'class': 'w-100'})
     return render(request, 'blog/categories.html', {"formset":formset})
 
+
+#get a post with a given ID
 def post(request, id):
-    #get post
-    post = BlogPost.objects.get(id=id)
+    #get post or 404
+    post = get_object_or_404(BlogPost, id=id)
 
-    if post:
-        #get adjacent posts
-        try:
-            next_post = post.get_next_by_created_at()
-        except BlogPost.DoesNotExist:
-            next_post = None
+    #get adjacent posts or None if post is first/last
+    try:
+        next_post = post.get_next_by_created_at()
+    except BlogPost.DoesNotExist:
+        next_post = None
 
-        try:
-            prev_post = post.get_previous_by_created_at()
-        except BlogPost.DoesNotExist:
-            prev_post = None
+    try:
+        prev_post = post.get_previous_by_created_at()
+    except BlogPost.DoesNotExist:
+        prev_post = None
 
-        #get categories and return
-        categories = []
-        for cat in post.categories.all():
-            categories.append(str(cat))
-        return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories), "prev": prev_post, "next":next_post})
-    else:
-        #redirect
-        return redirect('home.index')
+    #get categories of the post 
+    categories = []
+    for cat in post.categories.all():
+        categories.append(str(cat))
 
+    #return view
+    return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories), "prev": prev_post, "next":next_post})
+
+#delete a post with given id (login required)
+@login_required()
 def delete(request, id):
+    #if post request (which passed CSRF)
     if request.method == "POST":
-        #get post
-        BlogPost.objects.get(id=id).delete()
-        return redirect('blog:overview')
+        #try to delete post with given ID
+        try:
+            BlogPost.objects.get(id=id).delete()
+        except:
+            #exceptions don't really matter here
+            pass
 
-        
+    #redirect the user to the blog overview
+    return redirect('blog:overview')
 
+#blog overview
 def overview(request, pageno=1):
+    #get all posts, ordered by creation date
     posts = BlogPost.objects.order_by('-created_at', '-id')
+    #we display 6 posts per page
     pagecount = math.ceil(posts.count()/6)
+    #if the requested page number is > pagecount or < 1, opt for the last/first page
+    if pageno > pagecount: return redirect('blog:overview', pagecount)
+    if pageno < 1: return redirect('blog:overview', 1)
+    
     return render(request, 'blog/overview.html', {"posts":posts[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
