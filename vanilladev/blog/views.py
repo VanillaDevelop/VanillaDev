@@ -75,12 +75,18 @@ def post(request, id):
 
     #get adjacent posts or None if post is first/last
     try:
-        next_post = post.get_next_by_created_at()
+        next_post = post
+        while True:
+            next_post = next_post.get_next_by_created_at()
+            if next_post.is_published or request.user.is_authenticated: break
     except BlogPost.DoesNotExist:
         next_post = None
 
     try:
-        prev_post = post.get_previous_by_created_at()
+        prev_post = post
+        while True:
+            prev_post = prev_post.get_previous_by_created_at()
+            if prev_post.is_published or request.user.is_authenticated: break
     except BlogPost.DoesNotExist:
         prev_post = None
 
