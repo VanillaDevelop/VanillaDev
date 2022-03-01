@@ -30,6 +30,7 @@
     </div>
 </div>
 <div class="container">
+    {% if request.user.is_authenticated %}
     <div class="mb-3">
         <a href="{% url 'blog:edit' post.id %}"><button class="btn btn-warning">Edit this post</button></a>
         <form action="{% url 'blog:delete' post.id %}" method="post" class="d-inline">
@@ -37,6 +38,7 @@
             <input type="submit" class="btn btn-danger" value="Delete this post"></input>
         </form>
     </div>
+    {% endif %}
     {{post.content|safe}}
 </div>
 {% endblock %}
