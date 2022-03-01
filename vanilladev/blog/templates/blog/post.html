@@ -30,12 +30,13 @@
     </div>
 </div>
 <div class="container">
-    <p class="text-end">
-        <form action="{% url 'blog:delete' post.id %}" method="post">
+    <div class="mb-3">
+        <a href="{% url 'blog:edit' post.id %}"><button class="btn btn-warning">Edit this post</button></a>
+        <form action="{% url 'blog:delete' post.id %}" method="post" class="d-inline">
             {% csrf_token %}
             <input type="submit" class="btn btn-danger" value="Delete this post"></input>
         </form>
-    </p>
+    </div>
     {{post.content|safe}}
 </div>
 {% endblock %}
