@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
+    'projects.apps.ProjectsConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
