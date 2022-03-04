@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="frontpage-header" class="mb-3"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><span>Projects</span></li>
+        <li class="breadcrumb-item"><a href="{% url 'projects:page' project.id %}"><span>{{project.title}}</span></a></li>
+    </ol>
+</div>
+<div class="container header-container">
+    <h1 class="text-center">{{project.title}}</h1>
+    {% if not project.is_published %}
+    <p class="text-center"><span class="badge bg-danger">Draft</span></p>
+    {% endif %}
+    <p class="text-center">Project</p>
+    <div class="d-flex flex-row justify-content-between">
+        {% if next %}
+        <a class="navlink" href="{% url 'projects:page' next.id %}">&lt; Next Project</a>
+        {% else %}
+        <span class="navlink"></span>
+        {% endif %}
+        <span>06.07.2021</span>
+        {% if prev %}
+        <a class="text-end navlink" href="{% url 'projects:page' prev.id %}">Previous Project &gt;</a>
+        {% else %}
+        <span class="navlink"></span>
+        {% endif %}
+    </div>
+</div>
+<div class="container project-nutshell-container">
+    {% if request.user.is_authenticated %}
+    <div class="mb-3">
+        <a href="{% url 'projects:edit' project.id %}"><button class="btn btn-primary">Edit this page</button></a>
+        <form action="{% url 'projects:delete' project.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete this page"></input>
+        </form>
+    </div>
+    {% endif %}
+    <h1>Rust Helper - In a Nutshell</h1>
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab"
+                            href="#tab-1">Project Motivation</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab"
+                            href="#tab-2">Project Summary</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab"
+                            href="#tab-3">Resources</a></li>
+                </ul>
+                <div class="tab-content consistent-height">
+                    <div class="tab-pane active project-pane" role="tabpanel" id="tab-1">
+                        <p>
+                            {{project.motivation_summary}}
+                        </p>
+                    </div>
+                    <div class="tab-pane project-pane" role="tabpanel" id="tab-2">
+                        <p>
+                            {{project.project_summary}}
+                        </p>
+                    </div>
+                    <div class="tab-pane project-pane" role="tabpanel" id="tab-3">
+                        <div class="d-flex justify-content-center align-items-center flex-wrap h-100">
+                            {% if project.dataset_url %}
+                            <div class="d-flex flex-column text-center mx-4"><a href="{{project.dataset_url}}"><i
+                                        class="fab fa-kaggle icon-large"></i></a><span>Dataset</span></div>
+                            {% endif%}
+                            {% if project.repository_url %}
+                            <div class="d-flex flex-column text-center mx-4"><a href="{{project.repository_url}}"><i
+                                        class="fa fa-github icon-large"></i></a><span>Repository</span></div>
+
+                            {% endif%}
+                            {% if project.download_link_url %}
+                            <div class="d-flex flex-column text-center mx-4"><a href="{{project.download_link_url}}"><i
+                                        class="fa fa-download icon-large"></i></a><span>Download</span></div>
+
+                            {% endif%}
+                            {% if project.project_page_url %}
+                            <div class="d-flex flex-column text-center mx-4"><a href="{{project.project_page_url}}"><i
+                                        class="fa fa-external-link icon-large"></i></a><span>Project Page</span></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-5">
+            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                <h4>Technology Stack</h4>
+                <ul>
+                    {% for tech in techstack %}
+                    <li>{{tech}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <h1>Project Idea</h1>
+    <p>{{project.project_idea|safe}}</p>
+    <h1>Technology Stack</h1>
+    <p>{{project.technology_stack|safe}}</p>
+    <h1>Functionality</h1>
+    <p>{{project.functionality|safe}}</p>
+    <h1>Lessons Learned<br></h1>
+    <p>{{project.lessons_learned|safe}}</p>
+</div>
+{% endblock %}
