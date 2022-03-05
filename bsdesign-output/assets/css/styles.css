@@ -152,10 +152,6 @@ a {
   color: black;
 }
 
-#table-delete {
-  width: 20px;
-}
-
 #container-category-management {
   min-height: 70vh;
 }
@@ -259,5 +255,26 @@ a.nav-link {
 
 a > i:hover {
   color: #404040;
+}
+
+.fixed-width-button {
+  width: 70px;
+}
+
+#table-edit {
+  width: 80px;
+}
+
+#table-delete {
+  width: 80px;
+}
+
+.fixed-layout-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tab-25 {
+  width: 25%;
 }
 
