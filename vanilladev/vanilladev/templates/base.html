@@ -35,13 +35,18 @@
                     <li class="nav-item"><a {% if request.resolver_match.app_name == "home" %} class="active nav-link"
                             {% else %} class="nav-link" {% endif %} href="{% url 'home:index' %}">Home</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProjectsLink" role="button"
+                        <a {% if request.resolver_match.app_name == "projects" %} class="active nav-link dropdown-toggle" {% else %}
+                            class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdownProjectsLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Projects
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProjectsLink">
+                            {% if request.user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'projects:overview' %}"><strong>Management</strong></a></li>
+                            {% endif %}
                             {% for project in navbar_projects %}
-                            <li><a class="dropdown-item" href="{% url 'projects:page' project.id %}"> {{project.title}}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'projects:page' project.id %}">
+                                    {{project.title}}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
