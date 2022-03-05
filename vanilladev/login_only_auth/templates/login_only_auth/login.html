@@ -1,22 +1,46 @@
-{% extends 'base.html' %}
-{% load bootstrap5 %}
 
-{% block content %}
-<div class="container d-flex flex-column justify-content-center align-items-center" id="login-container">
-    <h1 class="text-center">Administrator Login</h1>
-    <div class="d-flex justify-content-center align-items-center w-100">
-        <div class="d-flex flex-column text-light" id="login-pane"><i class="fa fa-lock text-center icon-large"></i>
-            <h1 class="text-center">Login</h1>
-            <form action="" method="post">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                {% buttons %}
-                <button type="submit" class="btn btn-primary">
-                    Submit
-                </button>
-                {% endbuttons %}
-            </form>
+{% load bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>vanilladev</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container d-flex flex-column justify-content-center align-items-center" id="login-container">
+        <h1 class="text-center">Administrator Login</h1>
+        <div class="d-flex justify-content-center align-items-center w-100">
+            <div class="d-flex flex-column text-light" id="login-pane"><i class="fa fa-lock text-center icon-large"></i>
+                <h1 class="text-center">Login</h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                    {% endbuttons %}
+                </form>
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
+</body>
+
+</html>

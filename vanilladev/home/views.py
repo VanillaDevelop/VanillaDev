@@ -1,5 +1,5 @@
-from django.shortcuts import render
+from vanilladev.helpers import render_mainpage
 
 # Create your views here.
 def index(request):
-    return render(request, 'home/index.html')
+    return render_mainpage(request, 'home/index.html')

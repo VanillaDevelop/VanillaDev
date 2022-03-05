@@ -1,5 +1,6 @@
 from .forms import ProjectForm
-from django.shortcuts import redirect, render, get_object_or_404
+from vanilladev.helpers import render_mainpage
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Project
 
@@ -15,11 +16,11 @@ def add(request):
             return redirect('projects:page', project.id)
         else:
             #serve the sent form again
-            return render(request, 'projects/change.html', {"form":form})
+            return render_mainpage(request, 'projects/change.html', {"form":form})
 
     #GET - display empty project page
     form = ProjectForm()
-    return render(request, 'projects/change.html', {"form":form})
+    return render_mainpage(request, 'projects/change.html', {"form":form})
 
 
 #edit project page - requires login
@@ -35,12 +36,12 @@ def edit(request, id):
             return redirect('projects:page', project.id)
         else: 
             #serve the sent form again
-            return render(request, 'projects/change.html', {"form":form})
+            return render_mainpage(request, 'projects/change.html', {"form":form})
 
     #GET - show edit form for project
     project = get_object_or_404(Project, id=id)
     form = ProjectForm(instance=project)
-    return render(request, 'projects/change.html', {"form":form})
+    return render_mainpage(request, 'projects/change.html', {"form":form})
 
 
 #get a project with a given ID
@@ -69,7 +70,7 @@ def page(request, id):
         prev_project = None
 
     #return view
-    return render(request, 'projects/page.html', {"project":project, "prev": prev_project, "next": next_project, "techstack": project.technology_stack_csv.split(",")})
+    return render_mainpage(request, 'projects/page.html', {"project":project, "prev": prev_project, "next": next_project, "techstack": project.technology_stack_csv.split(",")})
 
 #delete a project with given id (login required)
 @login_required()
@@ -92,4 +93,4 @@ def overview(request):
     #get all projects, ordered by creation date
     projects = Project.objects.order_by('-created_at', '-id')
     
-    return render(request, 'projects/overview.html', {"projects":projects})
+    return render_mainpage(request, 'projects/overview.html', {"projects":projects})

@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404
+from vanilladev.helpers import render_mainpage
 from blog.models import Category
 from blog.models import BlogPost
 import math
@@ -18,11 +19,11 @@ def add(request):
             return redirect('blog:post', post.id)
         else:
             #serve the sent form again
-            return render(request, 'blog/change.html', {"form":form})
+            return render_mainpage(request, 'blog/change.html', {"form":form})
 
     #GET - display empty blog post
     form = BlogPostForm()
-    return render(request, 'blog/change.html', {"form":form})
+    return render_mainpage(request, 'blog/change.html', {"form":form})
 
 
 #edit blog post - requires login
@@ -38,12 +39,12 @@ def edit(request, id):
             return redirect('blog:post', post.id)
         else: 
             #serve the sent form again
-            return render(request, 'blog/change.html', {"form":form})
+            return render_mainpage(request, 'blog/change.html', {"form":form})
 
     #GET - show edit form for blog post
     post = get_object_or_404(BlogPost, id=id)
     form = BlogPostForm(instance=post)
-    return render(request, 'blog/change.html', {"form":form})
+    return render_mainpage(request, 'blog/change.html', {"form":form})
 
 
 #edit categories - requires login
@@ -62,7 +63,7 @@ def categories(request):
     for form in formset.forms:
         #Set width 100 for the textboxes for category name
         form.fields["name"].widget.attrs.update({'class': 'w-100'})
-    return render(request, 'blog/categories.html', {"formset":formset})
+    return render_mainpage(request, 'blog/categories.html', {"formset":formset})
 
 
 #get a post with a given ID
@@ -96,7 +97,7 @@ def post(request, id):
         categories.append(str(cat))
 
     #return view
-    return render(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories), "prev": prev_post, "next":next_post})
+    return render_mainpage(request, 'blog/post.html', {"post":post, "categories": ", ".join(categories), "prev": prev_post, "next":next_post})
 
 #delete a post with given id (login required)
 @login_required()
@@ -127,4 +128,4 @@ def overview(request, pageno=1):
     if pageno > pagecount: return redirect('blog:overview', pagecount)
     if pageno < 1: return redirect('blog:overview', 1)
     
-    return render(request, 'blog/overview.html', {"posts":posts[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
+    return render_mainpage(request, 'blog/overview.html', {"posts":posts[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
