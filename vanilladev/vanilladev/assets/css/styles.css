@@ -152,14 +152,6 @@ a {
   color: black;
 }
 
-a:hover {
-  color: black;
-}
-
-#table-delete {
-  width: 20px;
-}
-
 #container-category-management {
   min-height: 70vh;
 }
@@ -168,52 +160,31 @@ a:hover {
   width: 150px;
 }
 
-a.nav-link {
-  color: white;
-}
-
-a.active {
+a.nav-link:hover {
   color: black;
 }
 
-a.nav-link:hover {
-  color: white;
-}
-
 a.nav-link:focus {
-  color: white;
+  color: black;
 }
 
 .project-pane {
   min-height: 100px;
-  border-radius: 0px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 0px;
-  border-width: 2px;
-  border-style: solid;
-}
-
-#tabs-project {
-  border-bottom: 0px !important;
+  border-radius: 0;
+  border: 1px solid rgb(218,218,218);
+  padding: 10px;
 }
 
 .header-container {
   border-top: 1px solid;
   border-bottom: 1px solid;
   padding: 15px 50px 15px 50px;
-  margin-bottom: 5vh;
   border-color: #bbbbbb;
+  margin-bottom: 2vh;
 }
 
 .navlink {
   width: 200px;
-}
-
-.project-nutshell-container {
-  background: #141414;
-  padding: 25px;
-  border: 1px solid;
 }
 
 .consistent-height.tab-content {
@@ -235,11 +206,11 @@ a.nav-link:focus {
   width: 100%;
 }
 
-.nav-link:hover {
+.navbar-nav > * .nav-link:hover {
   text-decoration: underline solid var(--bs-dark);
 }
 
-.nav-link {
+.navbar-nav > * .nav-link {
   text-decoration: underline solid transparent;
   transition: text-decoration 1s ease, color 0.5s ease;
   text-underline-offset: 0.3em;
@@ -271,10 +242,39 @@ a.nav-link:focus {
 }
 
 .blogpagination-nav {
-  margin-bottom: 40px;
+  margin-bottom: 2vh;
 }
 
 .feature > p {
   text-align: justify;
+}
+
+a.nav-link {
+  color: black;
+}
+
+a > i:hover {
+  color: #404040;
+}
+
+.fixed-width-button {
+  width: 70px;
+}
+
+#table-edit {
+  width: 80px;
+}
+
+#table-delete {
+  width: 80px;
+}
+
+.fixed-layout-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tab-25 {
+  width: 25%;
 }
 

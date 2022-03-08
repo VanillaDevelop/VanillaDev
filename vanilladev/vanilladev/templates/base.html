@@ -32,11 +32,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a {% if request.resolver_match.app_name == "home" %} class="active nav-link" {% else %} class="nav-link" {% endif %} href="{% url 'home:index' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                    <li class="nav-item"><a {% if request.resolver_match.app_name == "home" %} class="active nav-link"
+                            {% else %} class="nav-link" {% endif %} href="{% url 'home:index' %}">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a {% if request.resolver_match.app_name == "projects" %} class="active nav-link dropdown-toggle" {% else %}
+                            class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdownProjectsLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProjectsLink">
+                            {% if request.user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'projects:overview' %}"><strong>Management</strong></a></li>
+                            {% endif %}
+                            {% for project in navbar_projects %}
+                            <li><a class="dropdown-item" href="{% url 'projects:page' project.id %}">
+                                    {{project.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#">Side Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
-                    <li class="nav-item"><a {% if request.resolver_match.app_name == "blog" %} class="active nav-link" {% else %} class="nav-link" {% endif %} href="{% url 'blog:overview' %}">Blog</a></li>
+                    <li class="nav-item"><a {% if request.resolver_match.app_name == "blog" %} class="active nav-link"
+                            {% else %} class="nav-link" {% endif %} href="{% url 'blog:overview' %}">Blog</a></li>
                 </ul>
             </div>
         </div>
@@ -52,4 +69,5 @@
         </div>
     </footer>
 </body>
+
 </html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container header-container mt-5">
+    <h1 class="text-center">Project Page Management</h1>
+</div>
+<div class="container" id="container-category-management">
+    <div class="table-responsive">
+        <table class="table fixed-layout-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="tab-25">Date of Creation</th>
+                    <th class="text-center" id="table-edit">Edit</th>
+                    <th class="text-center" id="table-delete">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{project.title}}  
+                        {% if not project.is_published %}
+                         <span class="badge bg-danger">Draft</span>
+                        {% endif %}
+                    </td>
+                    <td>{{project.created_at}}</td>
+                    <td class="text-center"><a href="{% url 'projects:edit' project.id %}"><button class="btn btn-primary fixed-width-button" type="button">Edit</button></a></td>
+                    <td class="text-center">
+                        <form action="{% url 'projects:delete' project.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger fixed-width-button" value="Delete"></input>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'projects:add' %}"><button class="btn btn-success" id="btn-update-categories">Add New Project</button></a>
+</div>
+{% endblock %}
