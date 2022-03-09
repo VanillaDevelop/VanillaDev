@@ -118,10 +118,10 @@ def delete(request, id):
 def overview(request, pageno=1):
     if request.user.is_authenticated:
         #get all posts, ordered by creation date
-        posts = BlogPost.objects.order_by('-created_at', '-id')
+        posts = BlogPost.objects.order_by('-created_at', '-id').values('id', 'created_at', 'content', 'title', 'is_published')
     else:
         #only get non draft posts
-        posts = BlogPost.objects.filter(is_published=True).order_by('-created_at', '-id')
+        posts = BlogPost.objects.filter(is_published=True).order_by('-created_at', '-id').values('id', 'created_at', 'content', 'title', 'is_published')
     #we display 6 posts per page
     pagecount = math.ceil(posts.count()/6)
     #if the requested page number is > pagecount or < 1, opt for the last/first page

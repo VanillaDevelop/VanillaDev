@@ -91,6 +91,6 @@ def delete(request, id):
 @login_required()
 def overview(request):
     #get all projects, ordered by creation date
-    projects = Project.objects.order_by('-created_at', '-id')
+    projects = Project.objects.order_by('-created_at', '-id').values('id', 'created_at', 'title', 'is_published')
     
     return render_mainpage(request, 'projects/overview.html', {"projects":projects})
