@@ -126,6 +126,8 @@ def overview(request, pageno=1):
         posts = BlogPost.objects.filter(is_published=True).order_by('-created_at', '-id').values('id', 'created_at', 'content', 'title', 'is_published')
     #we display 6 posts per page
     pagecount = math.ceil(posts.count()/6)
+    #fixes an infinite loop if there are 0 blogposts
+    if pagecount < 1: pagecount = 1
     #if the requested page number is > pagecount or < 1, opt for the last/first page
     if pageno > pagecount: return redirect('blog:overview', pagecount)
     if pageno < 1: return redirect('blog:overview', 1)
