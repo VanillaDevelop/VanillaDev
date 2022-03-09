@@ -39,7 +39,7 @@
                 <p class="text-center">{{post.created_at}}</p>
                 <hr>
                 <div class="d-flex flex-column flex-fill justify-content-between">
-                    <p>{{post.content|striptags|safe|truncatechars:230}}</p>
+                    <p>{{post.content|safe|truncatechars:230}}</p>
                     {% if not post.is_published %}
                     <p><span class="badge bg-danger">Draft</span></p>
                     {% endif %}

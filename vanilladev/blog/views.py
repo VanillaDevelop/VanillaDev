@@ -4,6 +4,8 @@ from blog.models import Category
 from blog.models import BlogPost
 import math
 from .forms import BlogPostForm, CategoryFormSet
+import bleach
+import re
 from django.contrib.auth.decorators import login_required
 
 
@@ -127,5 +129,11 @@ def overview(request, pageno=1):
     #if the requested page number is > pagecount or < 1, opt for the last/first page
     if pageno > pagecount: return redirect('blog:overview', pagecount)
     if pageno < 1: return redirect('blog:overview', 1)
+    #select the posts corresponding to the page number, sanitize their text, and return them.
+    displayedposts = []
+    for post in posts[6*(pageno-1):6*(pageno)]:
+        post["content"] = re.sub(r"</h[1-6]>", "</strong>", re.sub(r"<h[1-6]>", "<strong>", post["content"]))
+        post["content"] = bleach.clean(post["content"], tags=["strong"], strip=True)
+        displayedposts.append(post)
     
-    return render_mainpage(request, 'blog/overview.html', {"posts":posts[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
+    return render_mainpage(request, 'blog/overview.html', {"posts":displayedposts, "pagecount":pagecount, "pageno":pageno, "pages": range(1,pagecount+1)})
