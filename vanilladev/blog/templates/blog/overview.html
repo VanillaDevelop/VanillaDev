@@ -35,8 +35,8 @@
         {% for post in posts %}
         <div class="col-12 col-md-6 col-xl-4 mb-4">
             <div class="d-flex flex-column blogpost">
-                <h3 class="text-center">{{post.title}}</h3>
-                <p class="text-center">{{post.created_at}}</p>
+                <h3 class="text-center two-line-heading">{{post.title}}</h3>
+                <p class="text-center m-0">{{post.created_at}}</p>
                 <hr>
                 <div class="d-flex flex-column flex-fill justify-content-between">
                     <p>{{post.content|safe|truncatechars:230}}</p>

@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
 
 class BlogPost(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=50)
     content = RichTextField()
     created_at = models.DateField()
     is_published = models.BooleanField()

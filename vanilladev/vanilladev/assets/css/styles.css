@@ -242,7 +242,7 @@ a.nav-link:focus {
 }
 
 .blogpagination-nav {
-  margin-bottom: 2vh;
+  margin-bottom: 2em;
 }
 
 .feature > p {
@@ -276,5 +276,9 @@ a > i:hover {
 
 .tab-25 {
   width: 25%;
+}
+
+.two-line-heading {
+  height: 2.3em;
 }
 
