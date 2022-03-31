@@ -9,12 +9,12 @@ from .forms import ImageForm
 def add(request):
     #POST - save image
     if request.method == "POST":
-        form = ImageForm(request.POST)
+        form = ImageForm(request.POST, request.FILES)
         #if form is valid, redirect to the overview
         #TODO not implemented yet
         if form.is_valid():
             image = form.save()
-            return redirect('base:index')
+            return redirect('home:index')
         else:
             #serve the sent form again
             return render_mainpage(request, 'media/change.html', {"form":form})
