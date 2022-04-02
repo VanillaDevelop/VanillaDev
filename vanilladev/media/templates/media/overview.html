@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block content%}
+    <div id="frontpage-header" class="mb-4"></div>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="#"><span>Media</span></a></li>
+        </ol>
+    </div>
+    <div class="container header-container mt-4">
+        <h1 class="text-center">Vanilla Develop Media</h1>
+    </div>
+    <div class="container">
+        <nav class="blogpagination-nav">
+            <ul class="pagination">
+                {% if pageno > 1 %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                        aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                {% endif %}
+                {% for page in pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                {% endfor %}
+                {% if pageno < pagecount %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                        aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <a href="{% url 'media:add' %}"><button class="btn btn-success mb-3">Add new image</button></a>
+        <div class="row">
+            {% for image in images %}
+            <div class="col-12 col-md-6 col-xl-4 mb-4">
+                <div class="d-flex flex-column blogpost"><img class="media-previewimg" src="{{image.file.url}}">
+                    <p class="text-center text-muted mt-2 mb-0">{{image.created_at}}</p>
+                    <hr>
+                    <div class="d-flex flex-column flex-fill justify-content-between">
+                        <p class="text-start my-0 fw-bold">{{image.name}}</p>
+                        <p>{{image.description}}</p>
+                        <div class="d-flex flex-row justify-content-between align-items-center"><a class="text-end" href="#">Link to Image</a><a href="#">Edit Metadata</a><a class="link-danger" href="#">Delete Image</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <nav class="blogpagination-nav">
+            <ul class="pagination">
+                {% if pageno > 1 %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                        aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                {% endif %}
+                {% for page in pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                {% endfor %}
+                {% if pageno < pagecount %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                        aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}

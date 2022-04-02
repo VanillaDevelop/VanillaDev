@@ -5,4 +5,4 @@ __pycache__
 migrations
 static/
 .env
-*/media/images/
+files/

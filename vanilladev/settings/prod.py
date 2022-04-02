@@ -110,8 +110,8 @@ LOGIN_URL = "/user/login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/images/'
 
 # TODO: Should be turned on eventually once SSL certificate is installed on server
 # CSRF_COOKIE_SECURE=True

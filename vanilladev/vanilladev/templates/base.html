@@ -34,6 +34,9 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a {% if request.resolver_match.app_name == "home" %} class="active nav-link"
                             {% else %} class="nav-link" {% endif %} href="{% url 'home:index' %}">Home</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'media:overview' %}"><strong>Media</strong></a></li>
+                    {% endif %}
                     <li class="nav-item dropdown">
                         <a {% if request.resolver_match.app_name == "projects" %} class="active nav-link dropdown-toggle" {% else %}
                             class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdownProjectsLink" role="button"

@@ -5,4 +5,5 @@ app_name='media'
 
 urlpatterns = [
     path('add/', views.add, name='add'),
+    path('overview/', views.overview, name='overview'),
 ]
