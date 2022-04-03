@@ -1,7 +1,7 @@
 #frontpage-header {
   background: url("../../assets/img/pexels-nao-triponez-792199.jpg") center / cover no-repeat;
   height: 70vh;
-  max-width: 2200px;
+  max-width: 2000px;
   margin: auto;
 }
 
@@ -41,6 +41,8 @@ h1 {
 
 #navbar-main {
   min-height: 100px;
+  max-width: 1800px;
+  margin: auto;
 }
 
 @media (min-width: 768px) {
@@ -180,7 +182,7 @@ a.nav-link:focus {
   border-bottom: 1px solid;
   padding: 15px 50px 15px 50px;
   border-color: #bbbbbb;
-  margin-bottom: 2vh;
+  margin-bottom: 20px;
 }
 
 .navlink {
@@ -242,7 +244,7 @@ a.nav-link:focus {
 }
 
 .blogpagination-nav {
-  margin-bottom: 2em;
+  margin-bottom: 20px;
 }
 
 .feature > p {
@@ -280,5 +282,18 @@ a > i:hover {
 
 .two-line-heading {
   height: 2.3em;
+}
+
+.media-previewimg {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+
+.danger-link-button {
+  background: none;
+  border: none;
+  color: red;
+  text-decoration: underline;
 }
 

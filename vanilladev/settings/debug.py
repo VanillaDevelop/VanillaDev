@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'projects.apps.ProjectsConfig',
+    'media.apps.MediaConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,3 +150,6 @@ CKEDITOR_CONFIGS = {
 LOGIN_URL = "/user/login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/files/'
