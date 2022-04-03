@@ -16,14 +16,14 @@
         <nav class="blogpagination-nav">
             <ul class="pagination">
                 {% if pageno > 1 %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' pageno|previous %}"
                         aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                 {% endif %}
                 {% for page in pages %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' page %}">{{page}}</a></li>
                 {% endfor %}
                 {% if pageno < pagecount %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' pageno|next %}"
                         aria-label="Next"><span aria-hidden="true">»</span></a></li>
                 {% endif %}
             </ul>
@@ -38,7 +38,7 @@
                     <div class="d-flex flex-column flex-fill justify-content-between">
                         <p class="text-start my-0 fw-bold">{{image.name}}</p>
                         <p>{{image.description}}</p>
-                        <div class="d-flex flex-row justify-content-between"><a class="text-end" href="#">Link to Image</a><a href="#">Edit Metadata</a>
+                        <div class="d-flex flex-row justify-content-between"><a class="text-end" href="{{image.file.url}}">Link to Image</a><a href="{% url 'media:edit' image.id %}">Edit Image</a>
                             <form action="{% url 'media:delete' image.id %}" method="post" class="d-inline">
                                 {% csrf_token %}
                                 <input type="submit" class="danger-link-button" value="Delete Image" />
@@ -52,14 +52,14 @@
         <nav class="blogpagination-nav">
             <ul class="pagination">
                 {% if pageno > 1 %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|previous %}"
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' pageno|previous %}"
                         aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                 {% endif %}
                 {% for page in pages %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' page %}">{{page}}</a></li>
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' page %}">{{page}}</a></li>
                 {% endfor %}
                 {% if pageno < pagecount %}
-                <li class="page-item"><a class="page-link" href="{% url 'blog:overview' pageno|next %}"
+                <li class="page-item"><a class="page-link" href="{% url 'media:overview' pageno|next %}"
                         aria-label="Next"><span aria-hidden="true">»</span></a></li>
                 {% endif %}
             </ul>
