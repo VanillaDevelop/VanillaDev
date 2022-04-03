@@ -37,3 +37,18 @@ def overview(request, pageno=1):
     if pageno < 1: return redirect('media:overview', 1)
     #select the images corresponding to the page number and return them. 
     return render_mainpage(request, 'media/overview.html', {"images": images[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages":range(1, pagecount+1)})
+
+#delete image - requires login
+@login_required()
+def delete(request, id):
+    #if post request (which passed CSRF)
+    if request.method == "POST":
+        #try to delete post with given ID
+        try:
+            Image.objects.get(id=id).delete()
+        except:
+            #exceptions don't really matter here
+            pass
+
+    #redirect the user to the media overview
+    return redirect('media:overview')

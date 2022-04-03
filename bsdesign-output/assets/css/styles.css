@@ -290,3 +290,10 @@ a > i:hover {
   object-fit: contain;
 }
 
+.danger-link-button {
+  background: none;
+  border: none;
+  color: red;
+  text-decoration: underline;
+}
+

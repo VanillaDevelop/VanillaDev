@@ -38,7 +38,12 @@
                     <div class="d-flex flex-column flex-fill justify-content-between">
                         <p class="text-start my-0 fw-bold">{{image.name}}</p>
                         <p>{{image.description}}</p>
-                        <div class="d-flex flex-row justify-content-between align-items-center"><a class="text-end" href="#">Link to Image</a><a href="#">Edit Metadata</a><a class="link-danger" href="#">Delete Image</a></div>
+                        <div class="d-flex flex-row justify-content-between"><a class="text-end" href="#">Link to Image</a><a href="#">Edit Metadata</a>
+                            <form action="{% url 'media:delete' image.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="danger-link-button" value="Delete Image" />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
