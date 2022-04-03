@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
+    'projects.apps.ProjectsConfig',
     'media.apps.MediaConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
     'django.contrib.auth',
@@ -23,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
