@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="frontpage-header" class="mb-3"></div>
+<div id="frontpage-header" class="mb-4"></div>
 <div class="container">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
@@ -8,7 +8,7 @@
         <li class="breadcrumb-item"><a href="{% url 'blog:post' post.id %}"><span>{{post.title}}</span></a></li>
     </ol>
 </div>
-<div class="container header-container">
+<div class="container header-container mt-4">
     <h1 class="text-center">{{post.title}}<br></h1>
     {% if not post.is_published %}
     <p class="text-center"><span class="badge bg-danger">Draft</span></p>

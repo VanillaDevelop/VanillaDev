@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="frontpage-header" class="mb-3"></div>
+<div id="frontpage-header" class="mb-4"></div>
 <div class="container">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        {% if request.user.is_authenticated %}
+        <li class="breadcrumb-item"><a href="{% url 'projects:overview' %}"><span>Projects</span></a></li>
+        {% else %}
         <li class="breadcrumb-item"><span>Projects</span></li>
+        {% endif %}
         <li class="breadcrumb-item"><a href="{% url 'projects:page' project.id %}"><span>{{project.title}}</span></a></li>
     </ol>
 </div>
-<div class="container header-container">
+<div class="container header-container mt-4">
     <h1 class="text-center">{{project.title}}</h1>
     {% if not project.is_published %}
     <p class="text-center"><span class="badge bg-danger">Draft</span></p>

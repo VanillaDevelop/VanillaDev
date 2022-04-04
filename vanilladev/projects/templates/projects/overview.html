@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container header-container mt-5">
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'projects:overview' %}"><span>Projects</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
     <h1 class="text-center">Project Page Management</h1>
 </div>
 <div class="container" id="container-category-management">
