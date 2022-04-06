@@ -15,7 +15,7 @@ class ArticleForm(forms.ModelForm):
     tools_csv = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Technology Stack, Comma Separated")
 
     class Meta:
-        model = Project
+        model = Article
         widgets = {'id': forms.HiddenInput()}
         fields = '__all__'
         labels = {

@@ -23,5 +23,6 @@ urlpatterns = [
     path('user/', include('login_only_auth.urls', namespace='user')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('media/', include('media.urls',namespace='media')),
-    path('projects/', include('projects.urls', namespace='projects'))
+    path('projects/', include('projects.urls', namespace='projects')),
+    path('articles/', include('articles.urls', namespace='articles')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
