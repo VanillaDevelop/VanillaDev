@@ -37,6 +37,7 @@
                     {% if request.user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'media:overview' %}"><strong>Media</strong></a></li>
                     {% endif %}
+                    {% if request.user.is_authenticated or navbar_projects|length > 0 %}
                     <li class="nav-item dropdown">
                         <a {% if request.resolver_match.app_name == "projects" %} class="active nav-link dropdown-toggle" {% else %}
                             class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdownProjectsLink" role="button"
@@ -49,12 +50,36 @@
                             {% endif %}
                             {% for project in navbar_projects %}
                             <li><a class="dropdown-item" href="{% url 'projects:page' project.id %}">
-                                    {{project.title}}</a></li>
+                                    {{project.title}} {% if not project.is_published %} <span class="badge bg-danger">Draft</span> {% endif %}</a> 
+                                </li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Side Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link disabled" href="#">Projects</a></li>
+                    {% endif %}
+                    {% if request.user.is_authenticated or navbar_articles|length > 0 %}
+                    <li class="nav-item dropdown">
+                        <a {% if request.resolver_match.app_name == "articles" %} class="active nav-link dropdown-toggle" {% else %}
+                            class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdownArticlesLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Articles
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownArticlesLink">
+                            {% if request.user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'articles:overview' %}"><strong>Management</strong></a></li>
+                            {% endif %}
+                            {% for article in navbar_articles %}
+                            <li><a class="dropdown-item" href="{% url 'articles:page' article.id %}">
+                                    {{article.title}} {% if not article.is_published %} <span class="badge bg-danger">Draft</span> {% endif %}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link disabled" href="#">Articles</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link disabled" href="#">Side Projects</a></li>
                     <li class="nav-item"><a {% if request.resolver_match.app_name == "blog" %} class="active nav-link"
                             {% else %} class="nav-link" {% endif %} href="{% url 'blog:overview' %}">Blog</a></li>
                 </ul>
