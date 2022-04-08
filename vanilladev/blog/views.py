@@ -2,6 +2,7 @@ from django.shortcuts import redirect, get_object_or_404
 from vanilladev.helpers import render_mainpage
 from blog.models import Category
 from blog.models import BlogPost
+from django.db.models import ProtectedError
 import math
 from .forms import BlogPostForm, CategoryFormSet
 import bleach
@@ -56,8 +57,12 @@ def categories(request):
     if request.method == "POST":
         formset = CategoryFormSet(request.POST, prefix="form", queryset=Category.objects.all())
         #save if valid, but redirect to categories either way
-        if(formset.is_valid()):
-            formset.save()
+        try:
+            if(formset.is_valid()):
+                formset.save()
+        except ProtectedError:
+            #rerender the page if a protected error occured
+            pass
         return redirect('blog:categories')
 
     #GET - display categories
@@ -65,6 +70,7 @@ def categories(request):
     for form in formset.forms:
         #Set width 100 for the textboxes for category name
         form.fields["name"].widget.attrs.update({'class': 'w-100'})
+        form.blogcount = BlogPost.objects.filter(categories__in=[form.instance]).count()
     return render_mainpage(request, 'blog/categories.html', {"formset":formset})
 
 

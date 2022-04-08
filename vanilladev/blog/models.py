@@ -10,10 +10,14 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class BlogPostCategory(models.Model):
+    post = models.ForeignKey('BlogPost', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.PROTECT)
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=50)
     content = RichTextField()
     created_at = models.DateField()
     is_published = models.BooleanField()
-    categories = ManyToManyField(Category)
+    categories = ManyToManyField(Category, through=BlogPostCategory)
 
