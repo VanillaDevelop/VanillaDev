@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'articles:overview' %}"><span>Articles</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'articles:add' %}"><span>Add Article</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
+    <h1 class="text-center">Add/Edit Article</h1>
+</div>
+<div class="container">
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" id="btn-add-article" class="btn btn-success" value="Save" />
+    </form>
+    </form>
+</div>
+{% endblock %}

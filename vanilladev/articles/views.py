@@ -70,7 +70,7 @@ def page(request, id):
         prev_article = None
 
     #return view
-    return render_mainpage(request, 'articles/page.html', {"article":article, "prev": prev_article, "next": next_article, "techstack": article.technology_stack_csv.split(",")})
+    return render_mainpage(request, 'articles/article.html', {"article":article, "prev": prev_article, "next": next_article, "toolstack": article.tools_csv.split(",")})
 
 #delete a article with given id (login required)
 @login_required()

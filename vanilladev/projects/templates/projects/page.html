@@ -24,7 +24,7 @@
         {% else %}
         <span class="navlink"></span>
         {% endif %}
-        <span>06.07.2021</span>
+        <span>{{project.created_at}}</span>
         {% if prev %}
         <a class="text-end navlink" href="{% url 'projects:page' prev.id %}">Previous Project &gt;</a>
         {% else %}
@@ -36,10 +36,6 @@
     {% if request.user.is_authenticated %}
     <div class="mb-3">
         <a href="{% url 'projects:edit' project.id %}"><button class="btn btn-primary">Edit this page</button></a>
-        <form action="{% url 'projects:delete' project.id %}" method="post" class="d-inline">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-danger" value="Delete this page"></input>
-        </form>
     </div>
     {% endif %}
     <h1>{{project.title}} - In a Nutshell</h1>
@@ -91,7 +87,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+            <div class="d-flex flex-column align-items-center h-100">
                 <h4>Technology Stack</h4>
                 <ul>
                     {% for tech in techstack %}
