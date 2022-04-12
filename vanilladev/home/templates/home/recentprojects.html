@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'home:recentprojects' %}"><span>Edit Recent Projects</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
+    <h1 class="text-center">Recent Project Management</h1>
+</div>
+<div class="container">
+    <p>On this page you can change the displayed "Recent Work" posts on the home page. Please keep in mind to only update one recent project at the time.</p>
+    {% for form in recent %}
+        <h2>Recent Project</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+            {% endbuttons %}
+        </form>
+    {% endfor %}
+</div>
+{% endblock %}
