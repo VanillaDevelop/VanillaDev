@@ -32,8 +32,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a {% if request.resolver_match.app_name == "home" %}
+                            class="active nav-link dropdown-toggle" {% else %} class="nav-link dropdown-toggle"
+                            {% endif %} href="#" id="navbarDropdownHomeLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHomeLink">
+                            <li><a class="dropdown-item"
+                                    href="{% url 'home:recentprojects' %}"><strong>Edit Recent Projects</strong></a></li>
+                            <li><a class="dropdown-item" href="{% url 'home:index' %}">Homepage</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
                     <li class="nav-item"><a {% if request.resolver_match.app_name == "home" %} class="active nav-link"
                             {% else %} class="nav-link" {% endif %} href="{% url 'home:index' %}">Home</a></li>
+                    {% endif %}
                     {% if request.user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link"
                             href="{% url 'media:overview' %}"><strong>Media</strong></a></li>
