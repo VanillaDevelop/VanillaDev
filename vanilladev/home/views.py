@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from vanilladev.helpers import render_mainpage
 from django.contrib.auth.decorators import login_required
 from .forms import RecentProjectForm
@@ -9,20 +10,19 @@ def index(request):
 
 #change recent projects
 @login_required()
-def recentprojects(request):
+def recentprojects(request, id=None):
+    #if this is a post request, store the posted recent project
+    if request.method == 'POST' and id is not None:
+        form = RecentProjectForm(request.POST, instance=RecentProject.objects.get(id=id))
+        if form.is_valid():
+            form.save()
+            return redirect('home:recentprojects')
+
     #get the recent projects
     recent = list(RecentProject.objects.all())
-
-    #if there are less than 4 recent projects
-    if(len(recent) < 4):
-        #create 4 filler projects
-        for _ in range(4 - len(recent)):
-            newproj = RecentProject(title="", icon="", type="", description="", link="")
-            newproj.save()
-            recent.append(newproj)
     
     forms = []
-    for project in recent:
-        forms.append(RecentProjectForm(instance=project))
+    for project in recent[-4:]:
+        forms.append((project.id, RecentProjectForm(instance=project)))
 
     return render_mainpage(request, 'home/recentprojects.html', {"recent": forms})

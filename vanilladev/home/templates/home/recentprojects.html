@@ -15,12 +15,13 @@
     <h1 class="text-center">Recent Project Management</h1>
 </div>
 <div class="container">
-    <p>On this page you can change the displayed "Recent Work" posts on the home page. Please keep in mind to only update one recent project at the time.</p>
+    <p>On this page you can add a new "Recent Work" post for the home page, as well as edit the last four entries. 
+        Please keep in mind to only update one recent project at the time.</p>
     {% for form in recent %}
         <h2>Recent Project</h2>
-        <form action="" method="post">
+        <form action="{% url 'home:recentprojects' form.0 %}" method="post">
             {% csrf_token %}
-            {% bootstrap_form form %}
+            {% bootstrap_form form.1 %}
             {% buttons %}
             <button type="submit" class="btn btn-primary">
                 Update
