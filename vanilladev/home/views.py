@@ -17,6 +17,11 @@ def recentprojects(request, id=None):
         if form.is_valid():
             form.save()
             return redirect('home:recentprojects')
+    elif request.method == 'POST':
+        form = RecentProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home:recentprojects')
 
     #get the recent projects
     recent = list(RecentProject.objects.all())
@@ -25,4 +30,4 @@ def recentprojects(request, id=None):
     for project in recent[-4:]:
         forms.append((project.id, RecentProjectForm(instance=project)))
 
-    return render_mainpage(request, 'home/recentprojects.html', {"recent": forms})
+    return render_mainpage(request, 'home/recentprojects.html', {"recent": forms[::-1], "new": RecentProjectForm()})
