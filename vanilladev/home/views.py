@@ -6,7 +6,8 @@ from .models import RecentProject
 
 # Create your views here.
 def index(request):
-    return render_mainpage(request, 'home/index.html')
+    recents = list(reversed(RecentProject.objects.all()))[:4]
+    return render_mainpage(request, 'home/index.html', {'recents': recents})
 
 #change recent projects
 @login_required()
