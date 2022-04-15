@@ -12,7 +12,6 @@ class SideProject(models.Model):
     summary = models.TextField()
     technologies = models.TextField()
     notable = models.TextField()
-    link = models.CharField(max_length=128)
     project_type = models.CharField(
         max_length=2,
         choices=ProjectType.choices,

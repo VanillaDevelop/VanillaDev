@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sideprojects:index' %}"><span>Other Work</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
+    <h1 class="text-center">Other Work</h1>
+</div>
+<div class="container mt-5">
+    <p>Besides the occasional full-scope project and article, there are also several other deliverables I have created
+        over the years. For one reason or another, these projects are either limited in scope, written in inconsistent
+        code style, or more precise details of the implementation either are not available anymore, or cannot be made
+        available. These projects are grouped into three distinct categories and are showcased briefly on this page.</p>
+    <div class="row row-cols-1 row-cols-lg-3">
+        <div class="col d-flex flex-column align-items-center feature"><i class="fas fa-suitcase feature_icon"
+                id="feature_textanalysis"></i>
+            <h5 class="mt-2">Professional Work</h5>
+            <p>These are projects that I've worked on within the scope of university or in cooperation with companies,
+                for example in internships. Usually, even when I'm not legally obligated to keep the code and finer
+                implementation details of such projects closed source, I will do so anyway in order to prevent any
+                future potential complications.</p><button class="btn btn-primary" type="button">Show me more!</button>
+        </div>
+        <div class="col d-flex flex-column align-items-center feature"><i class="fas fa-compress-alt feature_icon" 
+            id="feature_machinelearning"></i>
+            <h5 class="mt-2">Side Projects</h5>
+            <p>Side projects are projects with a relatively small scope and/or relatively messy code, due to being built
+                while learning a new tool or framework, or due to an inherently limited use case. If a coding project
+                does not warrant a full coverage of its features, functionality, and technology stack, I will usually
+                classify it as a side project, and list it here briefly.</p><button class="btn btn-primary"
+                type="button">Show me more!</button>
+        </div>
+        <div class="col d-flex flex-column align-items-center feature"><i class="fas fa-gift feature_icon"
+                id="feature_gamedev"></i>
+            <h5 class="mt-2">The Treasure Trove</h5>
+            <p>The Treasure Trove is a collection of projects that I have worked on in my teenage years. These projects
+                are often not worth showing off on a technical level, but are things I was passionate about when I just
+                started programming, and to me are worth preserving on a sentimental level. Unlike the others, this
+                collection will likely not grow!</p><button class="btn btn-primary" type="button">Show me more!</button>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Professional Work</h2>
+    <div class="row">
+        {% for sp in sideprojects %}
+            {% if sp.project_type == 'PR'%}
+                <div class="col-xl-6 project-column">
+                    <div class="d-flex flex-column justify-content-start h-100 p-0">
+                        <h5 class="text-center header-sideproject">{{sp.title}}</h5>
+                        <div class="m-3">
+                            <div class="d-flex justify-content-center"><img class="mb-3 image-boarder"
+                                    src="{{sp.image_url}}" width="500"></div>
+                            <p><strong>Summary</strong><br>{{sp.summary}}</p>
+                            <p><strong>Technologies Used</strong><br>{{sp.technologies}}</p>
+                            <p><strong>Notable</strong><br>{{sp.notable}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor%}
+    </div>
+    <h2 class="text-center mb-4">Side Projects</h2>
+    <div class="row">
+        {% for sp in sideprojects %}
+            {% if sp.project_type == 'SP'%}
+                <div class="col-xl-6 project-column">
+                    <div class="d-flex flex-column justify-content-start h-100 p-0">
+                        <h5 class="text-center header-sideproject">{{sp.title}}</h5>
+                        <div class="m-3">
+                            <div class="d-flex justify-content-center"><img class="mb-3 image-boarder"
+                                    src="{{sp.image_url}}" width="500"></div>
+                            <p><strong>Summary</strong><br>{{sp.summary}}</p>
+                            <p><strong>Technologies Used</strong><br>{{sp.technologies}}</p>
+                            <p><strong>Notable</strong><br>{{sp.notable}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor%}
+    </div>
+    <h2 class="text-center mb-4">Treasure Trove</h2>
+    <div class="row">
+        {% for sp in sideprojects %}
+            {% if sp.project_type == 'TR'%}
+                <div class="col-xl-6 project-column">
+                    <div class="d-flex flex-column justify-content-start h-100 p-0">
+                        <h5 class="text-center header-sideproject">{{sp.title}}</h5>
+                        <div class="m-3">
+                            <div class="d-flex justify-content-center"><img class="mb-3 image-boarder"
+                                    src="{{sp.image_url}}" width="500"></div>
+                            <p><strong>Summary</strong><br>{{sp.summary}}</p>
+                            <p><strong>Technologies Used</strong><br>{{sp.technologies}}</p>
+                            <p><strong>Notable</strong><br>{{sp.notable}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}

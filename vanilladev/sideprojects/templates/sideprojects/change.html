@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sideprojects:overview' %}"><span>Side Projects</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sideprojects:add' %}"><span>Add Side Project</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
+    <h1 class="text-center">Add/Edit Side Project</h1>
+</div>
+<div class="container">
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" id="btn-add-project" class="btn btn-success" value="Save" />
+    </form>
+    </form>
+</div>
+{% endblock %}

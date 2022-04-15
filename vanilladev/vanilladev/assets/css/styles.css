@@ -297,3 +297,13 @@ a > i:hover {
   text-decoration: underline;
 }
 
+.header-sideproject {
+  height: 35px;
+  background-color: #181818;
+  padding: 5px;
+}
+
+.image-boarder {
+  border: 2px solid rgb(89,89,89) ;
+}
+

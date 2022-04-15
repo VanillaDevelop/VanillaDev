@@ -49,7 +49,7 @@ def index(request):
     sideprojects = SideProject.objects.all()
 
     #return view
-    return render_mainpage(request, 'sideprojects/page.html', {"sideproject":sideprojects})
+    return render_mainpage(request, 'sideprojects/index.html', {"sideprojects":sideprojects})
 
 #delete a sideproject with given id (login required)
 @login_required()
@@ -70,6 +70,6 @@ def delete(request, id):
 @login_required()
 def overview(request):
     #get all sideprojects, ordered by creation date
-    sideprojects = SideProject.objects.order_by('-created_at', '-id').values('id', 'created_at', 'title', 'is_published')
+    sideprojects = SideProject.objects.values('id', 'title', 'project_type')
     
     return render_mainpage(request, 'sideprojects/overview.html', {"sideprojects":sideprojects})

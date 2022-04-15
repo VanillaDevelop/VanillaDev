@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="frontpage-header" class="mb-4"></div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'sideprojects:overview' %}"><span>Side Projects</span></a></li>
+    </ol>
+</div>
+<div class="container header-container mt-4">
+    <h1 class="text-center">Side Project Page Management</h1>
+</div>
+<div class="container" id="container-category-management">
+    <div class="table-responsive">
+        <table class="table fixed-layout-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="tab-25">Project Type</th>
+                    <th class="text-center" id="table-edit">Edit</th>
+                    <th class="text-center" id="table-delete">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sp in sideprojects %}
+                <tr>
+                    <td>{{sp.title}}</td>
+                    <td>{{sp.project_type}}</td>
+                    <td class="text-center"><a href="{% url 'sideprojects:edit' sp.id %}"><button class="btn btn-primary fixed-width-button" type="button">Edit</button></a></td>
+                    <td class="text-center">
+                        <form action="{% url 'sideprojects:delete' sp.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger fixed-width-button" value="Delete"></input>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'sideprojects:add' %}"><button class="btn btn-success" id="btn-update-categories">Add New Project</button></a>
+</div>
+{% endblock %}
