@@ -25,4 +25,5 @@ urlpatterns = [
     path('media/', include('media.urls',namespace='media')),
     path('projects/', include('projects.urls', namespace='projects')),
     path('articles/', include('articles.urls', namespace='articles')),
+    path('side/', include('sideprojects.urls', namespace='sideprojects')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

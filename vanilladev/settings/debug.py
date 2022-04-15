@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'projects.apps.ProjectsConfig',
     'articles.apps.ArticlesConfig',
+    'sideprojects.apps.SideprojectsConfig',
     'media.apps.MediaConfig',
     'login_only_auth.apps.LoginOnlyAuthConfig',
     'django.contrib.auth',
