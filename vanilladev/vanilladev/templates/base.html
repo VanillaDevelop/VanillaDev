@@ -102,7 +102,24 @@
                     {% else %}
                     <li class="nav-item"><a class="nav-link disabled" href="#">Articles</a></li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Side Projects</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a {% if request.resolver_match.app_name == "sideprojects" %}
+                            class="active nav-link dropdown-toggle" {% else %} class="nav-link dropdown-toggle"
+                            {% endif %} href="#" id="navbarDropdownHomeLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Other Work
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHomeLink">
+                            <li><a class="dropdown-item"
+                                    href="{% url 'sideprojects:overview' %}"><strong>Edit Side Projects</strong></a></li>
+                            <li><a class="dropdown-item" href="{% url 'sideprojects:index' %}">Public Page</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a {% if request.resolver_match.app_name == "sideprojects" %} class="active nav-link"
+                            {% else %} class="nav-link" {% endif %} href="{% url 'sideprojects:index' %}">Other Work</a></li>
+                    {% endif %}
                     <li class="nav-item"><a {% if request.resolver_match.app_name == "blog" %} class="active nav-link"
                             {% else %} class="nav-link" {% endif %} href="{% url 'blog:overview' %}">Blog</a>
                     </li>
