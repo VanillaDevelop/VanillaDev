@@ -24,6 +24,8 @@ h1 {
   border-width: 2px;
   border-style: solid;
   color: rgb(255,255,255);
+  width: 1.75em;
+  text-align: center;
 }
 
 #feature_textanalysis {
