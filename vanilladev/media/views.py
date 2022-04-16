@@ -45,7 +45,9 @@ def delete(request, id):
     if request.method == "POST":
         #try to delete post with given ID
         try:
-            Image.objects.get(id=id).delete()
+            img = Image.objects.get(id=id)
+            img.file.delete()
+            img.delete()
         except:
             #exceptions don't really matter here
             pass
