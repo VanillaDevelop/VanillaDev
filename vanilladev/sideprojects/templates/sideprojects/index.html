@@ -22,7 +22,8 @@
             <p>These are projects that I've worked on within the scope of university or in cooperation with companies,
                 for example in internships. Usually, even when I'm not legally obligated to keep the code and finer
                 implementation details of such projects closed source, I will do so anyway in order to prevent any
-                future potential complications.</p><button class="btn btn-primary" type="button">Show me more!</button>
+                future potential complications.</p>
+                <a href="#professional-work"><button class="btn btn-primary" type="button">Show me more!</button></a>
         </div>
         <div class="col d-flex flex-column align-items-center feature mt-4"><i class="fas fa-compress-alt feature_icon" 
             id="feature_machinelearning"></i>
@@ -30,8 +31,8 @@
             <p>Side projects are projects with a relatively small scope and/or relatively messy code, due to being built
                 while learning a new tool or framework, or due to an inherently limited use case. If a coding project
                 does not warrant a full coverage of its features, functionality, and technology stack, I will usually
-                classify it as a side project, and list it here briefly.</p><button class="btn btn-primary"
-                type="button">Show me more!</button>
+                classify it as a side project, and list it here briefly.</p>
+                <a href="#side-projects"><button class="btn btn-primary"type="button">Show me more!</button></a>
         </div>
         <div class="col d-flex flex-column align-items-center feature mt-4"><i class="fas fa-gift feature_icon"
                 id="feature_gamedev"></i>
@@ -39,12 +40,13 @@
             <p>The Treasure Trove is a collection of projects that I have worked on in my teenage years. These projects
                 are often not worth showing off on a technical level, but are things I was passionate about when I just
                 started programming, and to me are worth preserving on a sentimental level. Unlike the others, this
-                collection will likely not grow!</p><button class="btn btn-primary" type="button">Show me more!</button>
+                collection will likely not grow!</p>
+                <a href="#treasure-trove"><button class="btn btn-primary" type="button">Show me more!</button></a>
         </div>
     </div>
 </div>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Professional Work</h2>
+    <h2 class="text-center mb-4" id="professional-work">Professional Work</h2>
     <div class="row">
         {% for sp in sideprojects %}
             {% if sp.project_type == 'PR'%}
@@ -63,7 +65,7 @@
             {% endif %}
         {% endfor%}
     </div>
-    <h2 class="text-center mb-4">Side Projects</h2>
+    <h2 class="text-center mb-4" id="side-projects">Side Projects</h2>
     <div class="row">
         {% for sp in sideprojects %}
             {% if sp.project_type == 'SP'%}
@@ -82,7 +84,7 @@
             {% endif %}
         {% endfor%}
     </div>
-    <h2 class="text-center mb-4">Treasure Trove</h2>
+    <h2 class="text-center mb-4" id="treasure-trove">Treasure Trove</h2>
     <div class="row">
         {% for sp in sideprojects %}
             {% if sp.project_type == 'TR'%}
