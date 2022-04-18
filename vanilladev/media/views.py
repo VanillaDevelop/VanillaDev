@@ -36,7 +36,7 @@ def overview(request, pageno=1):
     if pageno > pagecount: return redirect('media:overview', pagecount)
     if pageno < 1: return redirect('media:overview', 1)
     #select the images corresponding to the page number and return them. 
-    return render_mainpage(request, 'media/overview.html', {"images": images[6*(pageno-1):6*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages":range(1, pagecount+1)})
+    return render_mainpage(request, 'media/overview.html', {"images": images[12*(pageno-1):12*(pageno)], "pagecount":pagecount, "pageno":pageno, "pages":range(1, pagecount+1)})
 
 #delete image - requires login
 @login_required()
