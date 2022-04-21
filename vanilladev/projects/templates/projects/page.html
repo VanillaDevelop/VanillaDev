@@ -63,6 +63,9 @@
                     </div>
                     <div class="tab-pane project-pane" role="tabpanel" id="tab-3">
                         <div class="d-flex justify-content-center align-items-center flex-wrap h-100">
+                            {% if not project.dataset_url and not project.repository_url and not project.download_link_url and not project.project_page_url %}
+                                No resources are available for this project.
+                            {% endif %}
                             {% if project.dataset_url %}
                             <div class="d-flex flex-column text-center mx-4"><a href="{{project.dataset_url}}"><i
                                         class="fab fa-kaggle icon-large"></i></a><span>Dataset</span></div>
