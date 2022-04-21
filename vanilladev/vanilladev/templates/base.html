@@ -40,7 +40,7 @@
                             aria-expanded="false">
                             Home
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHomeLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownHomeLink">
                             <li><a class="dropdown-item"
                                     href="{% url 'home:recentprojects' %}"><strong>Edit Recent Projects</strong></a></li>
                             <li><a class="dropdown-item" href="{% url 'home:index' %}">Homepage</a></li>
@@ -62,7 +62,7 @@
                             aria-expanded="false">
                             Projects
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProjectsLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProjectsLink">
                             {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item"
                                     href="{% url 'projects:overview' %}"><strong>Management</strong></a></li>
@@ -86,7 +86,7 @@
                             aria-expanded="false">
                             Articles
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownArticlesLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownArticlesLink">
                             {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item"
                                     href="{% url 'articles:overview' %}"><strong>Management</strong></a></li>
@@ -110,7 +110,7 @@
                             aria-expanded="false">
                             Other Work
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHomeLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownHomeLink">
                             <li><a class="dropdown-item"
                                     href="{% url 'sideprojects:overview' %}"><strong>Edit Side Projects</strong></a></li>
                             <li><a class="dropdown-item" href="{% url 'sideprojects:index' %}">Public Page</a></li>
