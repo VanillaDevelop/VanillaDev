@@ -12,7 +12,7 @@ class ArticleForm(forms.ModelForm):
     repository_url = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Repository URL (Optional)", required=False)
     download_link_url = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Download Link URL (Optional)", required=False)
     project_page_url = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Project Page URL (Optional)", required=False)
-    tools_csv = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Technology Stack, Comma Separated")
+    tools_csv = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Tools used, Comma Separated")
 
     class Meta:
         model = Article
