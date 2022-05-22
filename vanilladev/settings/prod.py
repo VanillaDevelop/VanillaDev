@@ -6,7 +6,7 @@ from settings.debug import *
 load_dotenv()
 
 DEBUG = False
-ALLOWED_HOSTS = ["194.242.56.216"]
+ALLOWED_HOSTS = [".vanilla-dev.online"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -17,6 +17,5 @@ DATABASES = {
     }
 }
 
-# TODO: Should be turned on eventually once SSL certificate is installed on server
-# CSRF_COOKIE_SECURE=True
-# SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE=True
