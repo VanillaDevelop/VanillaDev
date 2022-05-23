@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
+    'middleware.GunicornMiddleware',
     'projects.apps.ProjectsConfig',
     'articles.apps.ArticlesConfig',
     'sideprojects.apps.SideprojectsConfig',
