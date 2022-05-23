@@ -1,4 +1,6 @@
-class XForwardedForMiddleware():
+from django.utils.deprecation import MiddlewareMixin
+
+class XForwardedForMiddleware(MiddlewareMixin):
     """
     Sets REMOTE_ADDR correctly to the client's ip, if django is run on a domain socket server.
     ref: https://stackoverflow.com/a/34254843/1031191
