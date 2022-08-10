@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'ckeditor',
     'bootstrap5',
+    'storages',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'projects.apps.ProjectsConfig',

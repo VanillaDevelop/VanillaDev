@@ -12,7 +12,6 @@ def add(request):
     if request.method == "POST":
         form = ImageForm(request.POST, request.FILES)
         #if form is valid, redirect to the overview
-        #TODO not implemented yet
         if form.is_valid():
             image = form.save()
             return redirect('media:overview')
