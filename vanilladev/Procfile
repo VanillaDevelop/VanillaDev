@@ -1,0 +1,1 @@
+web: cd vanilladev && gunicorn vanilladev.wsgi:application

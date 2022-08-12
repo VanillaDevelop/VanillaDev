@@ -1,1 +1,0 @@
-web: gunicorn vanilladev.vanilladev.wsgi:application
