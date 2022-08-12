@@ -1,1 +1,1 @@
-web:gunicorn vanilladev.wsgi
+web: gunicorn vanilladev:app
