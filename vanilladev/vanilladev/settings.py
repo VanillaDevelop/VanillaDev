@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from vanilladev.vanilladev.settings_debug import *
+from vanilladev.settings_debug import *
 
 load_dotenv()
 
