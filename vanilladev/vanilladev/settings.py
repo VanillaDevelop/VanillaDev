@@ -1,12 +1,12 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from settings.debug import *
+from vanilladev.vanilladev.settings_debug import *
 
 load_dotenv()
 
-DEBUG = True
-ALLOWED_HOSTS = ["*", ".vanilla-dev.online"]
+DEBUG = False
+ALLOWED_HOSTS = ["vanilla-dev-website.herokuapp.com", "vanilla-dev.online"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
