@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = os.getenv("SECRETKEY")
 DEBUG = True
 ALLOWED_HOSTS = ['*']
