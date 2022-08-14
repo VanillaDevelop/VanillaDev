@@ -6,7 +6,7 @@ from vanilladev.settings_debug import *
 load_dotenv()
 
 DEBUG = False
-ALLOWED_HOSTS = ["vanilla-dev-website.herokuapp.com", "vanilla-dev.online"]
+ALLOWED_HOSTS = ["vanilla.sh"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
