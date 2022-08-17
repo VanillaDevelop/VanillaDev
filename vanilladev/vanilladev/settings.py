@@ -27,7 +27,7 @@ AWS_S3_SECRET_ACCESS_KEY = os.getenv("AWSSECRET")
 AWS_STORAGE_BUCKET_NAME=os.getenv("AWSBUCKET")
 AWS_QUERYSTRING_AUTH = False
 
-CSRF_TRUSTED_ORIGINS = ["https://vanilla.sh"]
+CSRF_TRUSTED_ORIGINS = ["https://vanilla.sh", "https://vanilla-dev-website.herokuapp.com"]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
