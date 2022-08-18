@@ -1,21 +1,24 @@
 ## About This Project
-This project is a django-based, CMS-style web presence I will be using for my personal website, [Vanilla Develop](https://vanilla-dev.online). It is not intended to be an end-user friendly CMS which allows for the creation of different types of layouts and website styles, but rather mirrors my personal taste for what I want my portfolio website to look like. As such, you are free to customize it to your liking and use it as a framework for your personal projects. However, **do not reupload this project without making significant changes to it, and remove any relation to my name from the project before hosting this website for your personal use case.**
+This project is a django-based, CMS-style web presence I am using for my personal website, [Vanilla Develop](https://vanilla.sh). It is not intended to be an end-user friendly CMS which allows for the creation of different types of layouts and website styles, but rather mirrors my personal taste for what I want my portfolio website to look like. As such, you are free to customize it to your liking and use it as a framework for your personal projects. However, **do not reupload this project without making significant changes to it, and remove any relation to my name from the project before hosting this website for your personal use case.**
 
-This repository features a django project (in the directory `vanilladev/`), as well as a Bootstrap Studio file (`vanilladev.bsdesign`) and its corresponding output (`bsdesign-output/`). The bootstrap studio file contains rough templates/mockups of most of the pages, and is where I extract the `styles.css` file from, which hosts all custom css styles that are not provided by Bootstrap. The `requirements.txt` file contains all python packages required to host the project. The project is hosted using Python 3.7.
+This repository features a django project (in the directory `vanilladev/`), as well as a Bootstrap Studio file (`vanilladev.bsdesign`) and its corresponding output (`bsdesign-output/`). The bootstrap studio file contains rough templates/mockups of most of the pages, and is where I extract the `styles.css` file from, which contains all custom css styles that are not provided by Bootstrap. The `requirements.txt` file contains all python packages required to host the project. The project is hosted using Python 3.9.
 
 Not included in the GitHub repository is a `.env` file in the main directory. This includes the following keys:
 ```
-DBHOST = "{{Database Host IP}}"
-DBUSER = "{{Database User Name}}"
-DBNAME = "{{Database Name}}"
-DBPASSWD = "{{Database User Password}}"
-SECRETKEY = "{{Django Secret Key}}"
+DBHOST="{{Postgres Database Host}}
+DBUSER="{{Postgres Database User}}"
+DBNAME="{{Postgres Database Name}}"
+DBPASSWD="{{Postgres Database Password}}"
+SECRETKEY="{{Django Secret Key}}"
+AWSACCESSKEY="{{AWS Access Key for S3 Management User}}"
+AWSSECRET="{{AWS Secret for S3 Management User}}"
+AWSBUCKET="{{AWS S3 Bucket Name}}"
 ```
-Please note that these environment variables need to be provided in some form for the program to establish a database connection and function properly. The MySQL database can be configured in the usual Django way when the environment variables are properly provided (`python manage.py makemigrations` followed by `python manage.py migrate`).
+Please note that these environment variables need to be provided in some form for the program to establish a database connection and function properly. The Postgres database can be set up in the usual Django way when the environment variables are properly provided (`python manage.py makemigrations` followed by `python manage.py migrate`).
 
-Two setting files are provided, `settings.debug` and `settings.prod`, respectively for a debugging and production environment. The most notable differences between the two being whether or not the django debug environment is activated, and the allowed hosts (the debug setting allows all hosts, the production setting only allows my webserver to host the page. You may need to adapt this setting if you choose to reuse this settings file for your own purposes). When using `python manage.py` commands, make sure to provide the proper settings file via `--settings=settings.[debug/prod]`.
+Two setting files are provided, `vanilladev.settings` and `vanilladev.settings_debug`, respectively for a production and debugging environment. The most notable differences between the two being whether or not the django debug environment is activated, and the allowed hosts (the debug setting allows all hosts, the production setting only allows my webserver to host the page). Additionally, Some further changes exist in the production version, such as the CSRF policy and HTTPS redirects. The production version connects to the Postgres database and S3 bucket configured in the environment variables, while the debug version uses a local sqlite database and local file storage.
 
-The django project consists of multiple apps, each responsible for certain functionality, which are listed below.
+In general, the settings (prod) file inherits values from the settings_debug file, unless they are overwritten. If you want a setting to be available in both debugging and production, add it to the `vanilladev.settings_debug` file. The production environment is the default environment when starting the application. To start with debug settings, run `python manage.py runserver --settings=vanilladev.settings_debug`.
 
 ### Main Project (vanilladev)
 The main project is in the `vanilladev/vanilladev` directory. This is where the other apps are hooked into, including URL mappings. It also includes a static files directory `vanilladev/vanilladev/assets`, as well as a templates directory `vanilladev/vanilladev/templates` which contains the template `base.html`. This is the main html template that is used by most pages, containing styling and js includes, header, footer, and the common navbar.
@@ -40,7 +43,7 @@ This module serves pages via the path `/projects/`. It contains an overview of p
 The articles module serves pages via the path `/articles/`, and functions much like the projects module. Articles are essentially projects with a different structure. They offer the same options for logged in users when it comes to adding, editing, and deleting them.
 
 ### Media Upload (media module)
-This module features image upload for logged in users to a static directory mapped to the `/files/images` path, which maps to the corresponding directory in the webapp. Again, users can add, edit, and delete images from the server. 
+This module features image upload for logged in users to the S3 bucket configured in the environment variables. Again, users can add, edit, and delete images from the server. 
 
 ### "Other Work" (sideprojects module)
 The sideprojects module maps to the `/side` path. It is most comparable to the home page. The main page itself is static, but features dynamic integration of cards for three different types of projects (professional work, side projects, and treasure trove). Logged in users can add, edit and delete the corresponding cards.
