@@ -46,7 +46,7 @@ def edit(request, id):
 
 #get home page
 def index(request):
-    sideprojects = SideProject.objects.all()
+    sideprojects = SideProject.objects.all().order_by('-updated_at')
 
     #return view
     return render_mainpage(request, 'sideprojects/index.html', {"sideprojects":sideprojects})

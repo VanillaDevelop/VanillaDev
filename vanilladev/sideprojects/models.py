@@ -9,6 +9,7 @@ class SideProject(models.Model):
 
     title = models.CharField(max_length=50)
     image_url = models.CharField(max_length=128)
+    updated_at = models.DateTimeField(auto_now=True)
     summary = models.TextField()
     technologies = models.TextField()
     notable = models.TextField()
